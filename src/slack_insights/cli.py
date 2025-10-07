@@ -15,7 +15,7 @@ app = typer.Typer(
 )
 
 
-@app.command()
+@app.command(name="import")
 def import_conversations(file_path: str) -> None:
 	"""Import Slack conversations from SlackDump JSON export."""
 	typer.echo(f"Importing from: {file_path}")

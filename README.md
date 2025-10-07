@@ -17,14 +17,11 @@ Slack Insights transforms overwhelming Slack conversation history into actionabl
 
 ```bash
 # Create virtual environment
-python3 -m venv .venv
+uv venv
 source .venv/bin/activate  # macOS/Linux
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Install in development mode
-pip install -e .
+# Install dependencies (dev extras included)
+uv pip install -e ".[dev]"
 ```
 
 ## Configuration
@@ -59,19 +56,19 @@ slack-insights query-person Dan --recent
 
 ```bash
 # Run tests
-pytest
+uv run pytest
 
 # Run with coverage
-pytest --cov
+uv run pytest --cov
 
 # Format code
-ruff format .
+uv run ruff format .
 
 # Lint code
-ruff check .
+uv run ruff check .
 
 # Type check
-mypy src/
+uv run mypy src/
 ```
 
 ## License

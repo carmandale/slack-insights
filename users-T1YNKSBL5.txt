@@ -1,0 +1,575 @@
+Name                   ID           Bot?  Email                                              Deleted?  Restricted?
+                                                                                                       
+19mmcc                 U036NRAK4A1        19mmcc@gmail.com                                   deleted   
+3dryan                 USB8077NU          3DRyan@gmail.com                                             restricted
+aalampour              U04V2F6GDDX        aalampour@groovejones.com                          deleted   
+aaron.rendos           U054SRMAEJZ        Aaron.Rendos@idealindustries.com                             restricted
+abigail                UB92NEZUG          abigail@groovejones.com                            deleted   
+ableau                 U05M158F8A3        ableau@fourhcouncil.edu                            deleted   
+aboytesdesign          U06MNAD6CPR        aboytesdesign@gmail.com                                      restricted
+acadian.lapino         U02G7AH8ZPB        acadian.lapino@gmail.com                           deleted   
+adam                   UBAK3SCAC          aweider@groovejones.com                            deleted   
+adamv                  UHK605DC2          adamv@groovejones.com                              deleted   
+agarcia                U06N18XDPTP        agarcia@groovejones.com                            deleted   
+aharris                U02SG4W6ZA6        aharris@scott-howell.com                           deleted   
+ahsan.khoja            UN9AQB4CW          ahsan@groovejones.com                                        restricted
+alanna.j.spencer       UUN0NCDQC          alanna@groovejones.com                             deleted   
+aldofi                 US7E8FEDN          aldofi@gmail.com                                   deleted   
+alec                   USPU8UNH3          alec@lightstorystudios.com                         deleted   
+alee                   U02GMEYN5UL        alee@groovejones.com                               deleted   
+alex                   U03U3S094CX        alex@groovejones.com                               deleted   
+alexander              U02562EK5QS        ahlbergalexander@gmail.com                         deleted   
+alfredgpt              U04S339GW8J  bot                                                                
+ali                    U02AN2QM6AU        ali@groovejones.com                                deleted   
+allen                  U0810KZNQKC        allen@groovejones.com                              deleted   
+aloredo                U3V6JPXAM          armando@groovejones.com                                      
+amclemore              U02FTT384CR        amclemore@groovejones.com                          deleted   
+amery                  U06MF1VMM5W        amery@groovejones.com                              deleted   
+amr                    U056KBF5HFF        amr@groovejones.com                                deleted   
+anbreen                U09HKERF4L8        anbreen@groovejones.com                                      restricted
+andrea                 UCXPTTJBH          andrea@groovejones.com                                       
+andrea.molena          U05PMKJQT52        andrea.molena@studioevil.com                                 restricted
+andrew                 U9Q8MJ4P9          andrew@groovejones.com                             deleted   
+andrew.madden          UT3PC99K8          Andrew.Madden@idealindustries.com                  deleted   
+andrew.n.carman        UM2L55Q90          andrew.n.carman@gmail.com                                    
+andrey.chernovets      UUA18H73K          andrey.chernovets@softeq.com                       deleted   
+andy                   U09B4512APL        andy@groovejones.com                                         
+ann                    UBAGVJFSM          ann@groovejones.com                                deleted   
+anna                   U04D7QZJCGH        anna@groovejones.com                               deleted   
+anna.lutsenko          UTYLPU8UT          anna.lutsenko@softeq.com                           deleted   
+anthony                U022N0J4WG5        anthony@groovejones.com                            deleted   
+anthony_capece1        U022V6XDM7U        anthony_capece1@baylor.edu                         deleted   
+antonio                U02CTLHUVM1        antonio@groovejones.com                            deleted   
+aprillia               U02G4S4SX4P        aprilliapmlee@gmail.com                            deleted   
+ariel                  UJWPYDB3M          ariel@groovejones.com                              deleted   
+arman                  U09B45128D8        arman@groovejones.com                                        restricted
+arnold                 U01R74T7EBC        arnold@groovejones.com                             deleted   
+artur-huk              U02GQM5QR39        artur-huk@rt-pro.com                               deleted   
+asana                  U06LEJXNLCA  bot                                                                
+ash.anand              U02CJM9J3AQ        ash.anand@gpj.com                                  deleted   
+ashon                  U04LE7F8NUB        ashon@groovejones.com                                        restricted
+ashtonkennedy          U2XL0M4AG          ashton@groovejones.com                                       
+ashtonnkennedy         U038KDFQWCE        ashtonnkennedy@gmail.com                           deleted   
+asmith                 U02CREVGR6W        asmith@groovejones.com                             deleted   
+asong                  U01R67DBXA9        asong@groovejones.com                              deleted   
+asowers                U02N5HZDYJF        asowers@groovejones.com                            deleted   
+assist                 U03UYAKS2AC  bot                                                                
+astrobot               UA5V4GUPP    bot                                                      deleted   
+astromutt_paul         U2HJASU01          paul@astromuttcreative.com                         deleted   
+attendancebot          UEFV521PB    bot                                                      deleted   
+averi                  U05AU3MRRUH        averi@groovejones.com                                        
+avillarreal3           UM9SYTYQ5          avillarreal3@groovejones.com                       deleted   
+azrapse                U014HMT7Z9S        azrapse@gmail.com                                  deleted   
+bailey                 UK7KJ7NGY          bailey@groovejones.com                             deleted   
+baileycrider.contact   U018GKF4U7J        Baileycrider.contact@gmail.com                     deleted   
+baubin                 U097LERMPFD        baubin@groovejones.com                                       restricted
+bay                    UTNB4FNDR          bay@spiraloid.net                                  deleted   
+bay.raitt              UG24D8676          bay.raitt@gmail.com                                deleted   
+bbraas                 U01NRK39MBM        bbraas@scott-howell.com                            deleted   
+bcbaroo                U01FR31DUKX        bcbaroo@gmail.com                                  deleted   
+bcoon                  U05MKE8CW4V        bcoon@groovejones.com                                        restricted
+beng                   UQKAL19RN          beng@groovejones.com                               deleted   
+benjamin               U058F038B08        benjamin@groovejones.com                                     
+bgillman               U023M2CE1GD        bgillman@groovejones.com                           deleted   
+bgruita                UHZUXFG13          bgruita@groovejones.com                            deleted   
+bhavesh                U05MFNADW30        bhavesh@groovejones.com                            deleted   
+bill                   UVAH339ST          bevans@groovejones.com                             deleted   
+bip                    U0228FDNG78        bip@mrgroovejones.com                              deleted   
+bipassana123           UURK22Z5J          bip@groovejones.com                                          
+blazef                 U26E840SW          blazef@gmail.com                                   deleted   
+bobby                  U3Y892VMH          bobby@groovejones.com                                        
+box                    U044R2FQ552  bot                                                                
+branden                U020CQVD81Z        branden@groovejones.com                            deleted   
+brandon                U020CE5ASAE        brandon@groovejones.com                                      restricted
+brett                  U01TFMJCBEU        brett@groovejones.com                              deleted   
+brian                  U05AUEK0Z7F        bkim@groovejones.com                                         restricted
+brian412               U0872CHSVL7        brian@groovejones.com                              deleted   
+bryant                 U048AB50PRC        bryant@groovejones.com                             deleted   
+bryceados              U02T1B6464W        bryceados@gmail.com                                deleted   
+bryceadoss             U02STD2DSG7        bryceadoss@gmail.com                                         restricted
+bsherry                U016X5FV73M        bsherry@salesforce.com                             deleted   
+cameron                U025F6SA0AZ        cameron@cameronlgott.com                           deleted   
+cari                   UBCJ82CKC          cari@groovejones.com                               deleted   
+carlos                 U045VET0YBE        carlos@groovejones.com                                       restricted
+carly                  U04BP87JAKW        carly@groovejones.com                              deleted   
+carmandale             U2YFMSK3N          dale@groovejones.com                                         
+caverbeck              U01VDVAFDRT        caverbeck@groovejones.com                          deleted   
+ccidgfx                UEJ8RA7NW          ccidgfx@gmail.com                                  deleted   
+ccox                   U02AY06176D        ccox@groovejones.com                               deleted   
+ccrowell               UTTE1M2CC          ccrowell@groovejones.com                                     
+cdykes                 U06Q72YJUH4        cdykes@groovejones.com                                       restricted
+chennycmk              UUK2JPH9B          chennycmk@gmail.com                                deleted   
+chiller                U027DDZR0TW        chiller@groovejones.com                            deleted   
+chris                  U020Q6K3VLH        chris@averbeck.tv                                  deleted   
+chrisfisher            U2XM30BGW          cfisher@groovejones.com                                      
+chrisholden            U1YQLRQU9          chrisholden@groovejones.com                        deleted   
+chrisilva              U26EL4MHC          chrisilva3d@gmail.com                              deleted   
+christina              U04GFS9F72N        christina@groovejones.com                          deleted   
+clatshaw               UBMK4LENM          clatshaw@ftfstudios.com                            deleted   
+claude                 U057HTDSGM9  bot                                                      deleted   
+cmartin                U02BGJT8PGX        cmartin@groovejones.com                            deleted   
+codegen                U0973EJEL2C  bot                                                                
+colin                  U05KJK82E90        colin@groovejones.com                                        restricted
+confluence             U030ZMQ3HK9  bot                                                                
+conor                  UDLMVB6HK          conor@groovejones.com                              deleted   
+contactomarnow         U9UQDEH33          contactomarnow@gmail.com                           deleted   
+corey                  U02B4M99TU6        corey@groovejones.com                              deleted   
+csmurphyart            UUSFTNWLB          csmurphyart@gmail.com                              deleted   
+cstisser               U02BYRCA30Q        cstisser@groovejones.com                           deleted   
+ctuckersells           U0420GF9U1J        ctuckersells@scott-howell.com                                
+cursor                 U091LLH3RA6  bot                                                                
+dallas                 UM3FW6257          dallas@groovejones.com                             deleted   
+dasanimation410        U06PUS0R551        dasanimation410@gmail.com                          deleted   
+dave                   U06QCVC0G57        dave@groovejones.com                               deleted   
+david                  U01MKM741DJ        daguilar@groovejones.com                           deleted   
+deactivateduser201040  U01MAKGQ493        deactivateduser201040-groove-jones@slack-corp.com  deleted   
+deactivateduser201906  U02JTK7MC3B        deactivateduser201906-groove-jones@slack-corp.com  deleted   
+deactivateduser205737  UU9HNKHTJ          deactivateduser205737-groove-jones@slack-corp.com  deleted   
+deactivateduser258768  U0400A2MFU6        deactivateduser258768-groove-jones@slack-corp.com  deleted   
+deactivateduser375556  U0347KQQVHA        deactivateduser375556-groove-jones@slack-corp.com  deleted   
+deactivateduser495108  U03KHLJRMA8        deactivateduser495108-groove-jones@slack-corp.com  deleted   
+deactivateduser71268   UB99KMEJG          deactivateduser71268-groove-jones@slack-corp.com   deleted   
+deactivateduser802083  U9Z20PE69          deactivateduser802083-groove-jones@slack-corp.com  deleted   
+deactivateduser832497  U056P2F1TGE        deactivateduser832497-groove-jones@slack-corp.com  deleted   
+deactivateduser851367  U05KGBDDW6N        deactivateduser851367-groove-jones@slack-corp.com  deleted   
+dealbot_by_pipedrive   U083TJN4GP3  bot                                                                
+delaney                U05TM2EE6V8        delaney@groovejones.com                            deleted   
+demethius              UMV2R928P          demethius@gmail.com                                deleted   
+dennis.grekousis       U0126DA15A6        dennis.grekousis@idealindustries.com               deleted   
+denver                 U022HDCTLSV        denver@thebrutesquad.com                           deleted   
+denver163              U030A9ZQ23Y        Denver@denverrobbins.com                           deleted   
+deployment_bot         U070BQRGJNS  bot                                                                
+devender               U06H6AV6K0B        devender@groovejones.com                                     restricted
+dhanush                UDLKW60UV          dhanush@groovejones.com                            deleted   
+dhanush.krishna        UDKG1KZ0B          dhanush.krishna@outlook.com                        deleted   
+dieter                 U06V9K3B1T7        dieter@groovejones.com                                       restricted
+dimakulakov3           U04GP5LK67L        dimakulakov3@gmail.com                             deleted   
+disco                  U94CL6C48    bot                                                      deleted   
+djones                 U01R74T6UQ2        djones@groovejones.com                             deleted   
+dleeper                U4A4T0H0W          danieldleeper@gmail.com                            deleted   
+dmarfin                UNPUPF525          dmarfin@gmail.com                                  deleted   
+dmaxwell               UCEJ15XKM          diana@groovejones.com                                        
+dmitriy.antilevskiy    UTYLPTYTD          dmitriy.antilevskiy@softeq.com                               restricted
+dnajarian              U02634QM26Q        david@groovejones.com                              deleted   
+dominick               U097JFJ2BNU        dominick@groovejones.com                                     
+doodle_bot             U0124R5PBLM  bot                                                      deleted   
+doug                   U01FX960ZB5        doug@freshbrained.com                              deleted   
+doug021                U07UC389WLA        doug@groovejones.com                                         
+dramaticaudio          U4H8KL0CU          jscott@dramaticaudio.com                           deleted   
+dropbox                UL4PKJSCB    bot                                                                
+dropbox-paper          UCBLRHGH0    bot                                                                
+dsabathier             U02KB4LLNLU        dsabathier@fourhcouncil.edu                        deleted   
+edit1                  U03UDU2F17U        edit1@scott-howell.com                                       restricted
+eduardo                U03DQNBC7EC        eduardo@groovejones.com                            deleted   
+eemery                 U016G6ZMQ23        eemery@salesforce.com                              deleted   
+egonzalez              U02NY2JM3R8        egonzalez@groovejones.com                          deleted   
+egrajo                 U04M5EZQAP4        egrajo@gmail.com                                             restricted
+elfrederico3           UTQT2MWRL          elfrederico3@gmail.com                             deleted   
+ellestiles             U04LXNRP0LA        ellestiles@gmail.com                                         restricted
+emaxwell2261970        U02T2ABG6VB        emaxwell2261970@gmail.com                                    restricted
+emilyaustin            U2XLE2WBX          emily@groovejones.com                                        
+enrique                U05USPYL1CH        enrique@groovejones.com                            deleted   
+erickomc13             UA00BHSLX          erickomc13@gmail.com                               deleted   
+ethancompton           U6GT7B154          ethan@groovejones.com                                        
+eturan                 U02FSBEEV5J        e.sinanturan@gmail.com                             deleted   
+evansw9                U0109DF7YCU        Evansw9@aol.com                                    deleted   
+evanwakefield2000      U7ZSAV0N9          evanwakefield2000@gmail.com                        deleted   
+eventbot               UEHUX9FC6    bot                                                                
+eventonbot             U012W2K78SC  bot                                                      deleted   
+fabiana                U03JTAWM0AD        fabiana@groovejones.com                                      restricted
+farid                  U04EZG10P24        farid@groovejones.com                                        restricted
+faryd                  U05MWMMUTBL        faryd@groovejones.com                                        restricted
+feini                  U97P40XEE          feini@groovejones.com                              deleted   
+fguiro                 U02NV8T3WQG        fguiro@groovejones.com                             deleted   
+fiethlogan             UUS3DTXS4          fiethlogan@gmail.com                               deleted   
+figma                  U02PP1KUC3Y  bot                                                                
+fj                     U01P4UL3D7U        fj@groovejones.com                                           restricted
+franklinsterlingiii    U03K1NQ244E        franklinsterlingiii@gmail.com                      deleted   
+fshaikh                U02BGJT7N6B        fshaikh@groovejones.com                                      restricted
+funnypagesprod         U04SDKC824E        funnypagesprod@gmail.com                                     restricted
+gabi                   U04C0U3KGGG        gabi@groovejones.com                                         
+gabriel                U028BTVM1K3        gabriel@groovejones.com                            deleted   
+garcellano             U2944RZU6          agarcellano@gmail.com                              deleted   
+garrett                U05U28A7HEX        garrett@groovejones.com                            deleted   
+geoffmellon            U0882FJ9ACC        geoffmellon@hotmail.com                                      restricted
+geoffrey               U01JLLX8F6Z        geoffrey@groovejones.com                           deleted   
+george                 U02D88Z20SF        george@groovejones.com                             deleted   
+georgek.carman         UQC033BGW          georgek.carman@gmail.com                           deleted   
+gianna                 UBAJWRZAM          gianna@groovejones.com                             deleted   
+github                 U026GJFCB37  bot                                                                
+gitlab                 U077UA7D5CK  bot                                                                
+giulia.gurnari         U09HAML1BPT        giulia.gurnari@studioevil.com                                restricted
+gjcommish              U42RUUYSX          gary@groovejones.com                                         
+gmilton.biz            UTQSHFLP3          gmilton.biz@gmail.com                              deleted   
+google_calendar        U029LQ0D9TJ  bot                                                                
+googledrive            U969HPRTP    bot                                                                
+grayson                UUS87B9N0          grayson@groovejones.com                            deleted   
+gregory                U0497SRDY9Z        gregory@groovejones.com                                      restricted
+grok241                UMT6VKZE1          grok241@aol.com                                    deleted   
+gserrano               U02B1LY3SP8        gserrano@groovejones.com                           deleted   
+gzanchett              U02G28NCR3J        guizanchett@gmail.com                                        restricted
+habib                  UTW867VMH          habib@grandlinestudios.com                         deleted   
+hamzah                 U02AJR9LW1W        hamzah@groovejones.com                             deleted   
+hanes2111              U010EFSAYT0        hanes2111@gmail.com                                deleted   
+hartemus               U06ME9SL1JA        hatem@groovejones.com                                        restricted
+hcasillas              U7YUD1KTK          hcasillas@groovejones.com                                    
+henry                  U074BSMP7UL        henry@groovejones.com                              deleted   
+henryhagerty           UU6885WRY          henryhagerty@gmail.com                                       restricted
+hnan                   U02BHLGFTHN        jack.toptal@gmail.com                              deleted   
+howard.benjamin29      UBL5ERN1Z          howard.benjamin29@gmail.com                        deleted   
+hugo                   U04USAMEVUL        hugo@groovejones.com                                         restricted
+ian_johnson            U45CN0EP6          ian@chaos-creative.com                                       restricted
+ibanks                 U02T3F8P6Q6        ibanks@groovejones.com                                       restricted
+igonzales              U02ML3TS58W        igonzales@groovejones.com                          deleted   
+indeed_for_employers   U053C1PAKDG  bot                                                      deleted   
+isaacmurray            U6H6RN30C          hello@isaacmurray.com                              deleted   
+itzaferg               U2X1504QH          dan@groovejones.com                                          
+ivan                   U0727L77T1V        ivan@groovejones.com                                         restricted
+ivan.berezovski        UUC0ZUQQP          ivan.berezovski@softeq.com                                   restricted
+j.strougo              UU6884Z50          j.strougo@hangmandigital.com                                 restricted
+jackieo.art            UDFTQRPBQ          jackieo.art@gmail.com                              deleted   
+jamaral                U02LU3ZG3M4        jamaral@groovejones.com                            deleted   
+james                  UD5M0KQ3Z          jrowellfx@gmail.com                                deleted   
+james.c                U02C3JM85AP        james.c@houdini.studio                             deleted   
+jared                  U04E6SJERHQ        jared@groovejones.com                                        restricted
+jarvis                 U04RQJWPB5M  bot                                                                
+jason                  U3V7K3GD7          jtaylor1208@gmail.com                              deleted   
+jason090               U01R74T7SD8        jason@groovejones.com                              deleted   
+jason116               U0120MPLCP7        jason@littlezoostudio.com                          deleted   
+jasondull.art          U01RZ3XBM2L        jdull@groovejones.com                              deleted   
+jbryant                U6Y8WP85V          jbryant@fromthefuturegames.com                     deleted   
+jbung                  U02N7QT93FW        jbung@groovejones.com                              deleted   
+jc                     U04BLTRUF7D        jc@groovejones.com                                 deleted   
+jcardinal              U02MB5D2527        jackcardinal@icloud.com                            deleted   
+jdelaney               U02GHMDSS12        jdelaney@groovejones.com                           deleted   
+jduerr                 U040TNMT2BV        jduerr@groovejones.com                             deleted   
+jean                   U07F4PHR908        jean@groovejones.com                                         restricted
+jeannot                U03K1RW58MS        jeannot@groovejones.com                            deleted   
+jeedee                 U02EX07GN2F        jeedee@houdini.studio                              deleted   
+jeff                   UD3LEDU7P          jgiron@groovejones.com                             deleted   
+jeff129                U01G9G43BLL        jeff@jsivy.com                                     deleted   
+jeff469                U04445U9LM6        jeff@groovejones.com                                         
+jenee.carlson          UUL3S2GLR          jenee.carlson@idealindustries.com                            restricted
+jenniferlin122         U078VRU2XTK        jenniferlin122@gmail.com                                     restricted
+jeremy                 U01DLQAU30C        jeremy@bellwetherprototype.com                               restricted
+jeremy887              U087A0GS38F        jeremy@groovejones.com                                       restricted
+jeremyr.dev            U01FAA93AC9        Jeremyr.dev@gmail.com                              deleted   
+jerry.nkumu            U024K0TS0KA        jerry.nkumu@toptal.com                             deleted   
+jessedraperart         U0172NSB126        jessedraperart@gmail.com                           deleted   
+jessenewman            U014ESDM2BG        jessenewman@mac.com                                          restricted
+jfruits                U019833RE4V        jfruits@salesforce.com                             deleted   
+jfullrich              U9ZH4RY6T          jfullrich@digitalquillproductions.com              deleted   
+jhanashiro             U016Q7ATSUE        jhanashiro@salesforce.com                          deleted   
+jilangilang            U016VHURN6R        jilangilang@salesforce.com                         deleted   
+jimwelch               U3V6XBG3A          jim@groovejones.com                                deleted   
+jirabot                UDNG99XBM    bot                                                                
+jitender               U041P2X0WS3        jitender@groovejones.com                                     restricted
+jmiller                U02G28NC6Q0        jmiller@groovejones.com                            deleted   
+jmontague              U02D26CLFJ9        jmontague@groovejones.com                          deleted   
+jnoble                 U02FQ7DNPMY        jnoble@groovejones.com                             deleted   
+jonathan.hall3235101   U05NR460LRH        jonathan.hall3235101@gmail.com                               restricted
+joncriner              U2CUT6QGJ          joncriner@gmail.com                                deleted   
+jonjones               U1YNWQFUJ          jon@groovejones.com                                deleted   
+joreedolin             UURLMLCF7          joreedolin@gmail.com                               deleted   
+joshua                 UR8FQJQKC          joshua@groovejones.com                                       restricted
+joy                    UBARDM6MA          joyof3d@gmail.com                                            restricted
+joyce                  U02M0TX6E4T        joyce@groovejones.com                              deleted   
+joyof3dx               U03JEPGH810        Joyof3Dx@gmail.com                                 deleted   
+jreneker               U017L3BNHT6        jreneker@umc.edu                                             restricted
+jrivera                UKP94CTS4          jrivera@groovejones.com                            deleted   
+jsnitker               U0932E4SP2S        jsnitker@its.jnj.com                               deleted   
+jsosa                  U6AN790CD          jesse@dinosaurentertainment.com                    deleted   
+jstevens               U0202GC3CH2        jstevens@groovejones.com                           deleted   
+jsykora                U01NC6F12UD        JSykora@willowstagency.com                                   restricted
+judahdobin             U04SDKCM81L        judahdobin@gmail.com                                         restricted
+judith                 U04C0BAA4UV        judith@groovejones.com                             deleted   
+julianolins            U26L0US0G          jnlins10@gmail.com                                 deleted   
+julio                  U06V9K35E3F        julio@groovejones.com                              deleted   
+juno                   U023W4CR3RC        juno@groovejones.com                               deleted   
+justin                 U9NPB4KSM          jduncan@groovejones.com                            deleted   
+justinleeduncan        U9F5H1LAD          justinleeduncan@live.com                           deleted   
+jweingartner           U026HUKGM9B        justin@groovejones.com                             deleted   
+kaileb                 U04TCJ72Z9T        kaileb@groovejones.com                                       restricted
+kaitlin.liebling       U054VL75TJP        Kaitlin.Liebling@idealindustries.com                         restricted
+kaitlyn                UJWBGRU8K          kaitlyn@groovejones.com                            deleted   
+karim                  U0698RB11QX        karim@groovejones.com                              deleted   
+karlschecht            UVC6ARN4X          karlschecht@gmail.com                              deleted   
+kasey                  U9NS10K7B          kasey@groovejones.com                              deleted   
+kat                    UJD92GWBE          kat.kinkead13@gmail.com                                      restricted
+katrina.bittner        U02CCFC7PKL        katrina.bittner@gpj.com                            deleted   
+kcline                 UR4PLT37D          kcline@scott-howell.com                            deleted   
+kclines                UR89Q8CTB          kclines@scott-howell.com                           deleted   
+kdeignan               U01734URKN0        kdeignan@salesforce.com                            deleted   
+kehlers                UJXCSRNLA          kehlers@groovejones.com                            deleted   
+keith                  U04A6HJ3T7Y        keith@ignitiondigital.com                          deleted   
+keith187               U058CBBS70T        keith@groovejones.com                                        restricted
+kenneth                U099XT72VUJ        kenneth@groovejones.com                                      restricted
+kevin                  U098MQUCDS5        kevin@groovejones.com                                        restricted
+kgardner               U3V5REUQZ          kassi@groovejones.com                              deleted   
+khoi                   U042W3UU3UM        khoi@groovejones.com                               deleted   
+kingram                UGW0FJVQC          kingram@scott-howell.com                           deleted   
+kriskramer             UD2S8EKHP          kriskramer@gmail.com                               deleted   
+kristopher             U0484G3EQF3        kristopher@groovejones.com                                   restricted
+krives                 UAHEMR29M          krives@fromthefuturegames.com                      deleted   
+ktran                  U02LXJ51673        ktran@groovejones.com                                        restricted
+kudzaithomas           UBKETSKGA          kudzaithomas@hotmail.com                           deleted   
+kuganesan              U04USAMC8S0        kuganesan@groovejones.com                                    restricted
+kyle                   U8P8Y7ZCP          kyle@groovejones.com                               deleted   
+kyoussef               U02JGKB1ZKM        kyoussef@groovejones.com                                     
+latasha856             U056P2K3X70        latasha@groovejones.com                            deleted   
+laura                  U03D7TS9JBE        laura@groovejones.com                                        
+lauren                 UKE41K4NQ          lauren@groovejones.com                             deleted   
+linas                  U062J2NE5AM        linas@12brolls.com                                 deleted   
+lindsey                UV2QD8WKW          lindsey@groovejones.com                            deleted   
+liz.wright             U05QW0DM8N4        liz.wright@richardattiasassociates.com                       restricted
+lnus                   UVC6ASQ3Z          lnus@c.ringling.edu                                deleted   
+lorenzo.casanova       U01CWBBRYAX        lorenzo.casanova@studioevil.com                              restricted
+lorraine.bett          UBMAAQLFL          lorraine.bett@gmail.com                            deleted   
+lpineda                U02HTBBR073        lpineda@groovejones.com                                      restricted
+lriondet               U04S9KXV8ES        lriondet@groovejones.com                                     restricted
+luca.marchetti         U01CHLF83TR        luca.marchetti@studioevil.com                                restricted
+luca.salmin            U01GGH7E3LZ        luca.salmin@studioevil.com                                   restricted
+lucidchart             U02F33NA72R  bot                                                                
+lvillalobos            U05725MARJS        lvillalobos@groovejones.com                                  restricted
+lwakefield3            U019PKESW58        lwakefield3@gmail.com                              deleted   
+mabbas                 U09G7QSMR4Y        mabbas@groovejones.com                                       restricted
+mail                   UUCB45BR7          mail@seanmoakes.com                                          restricted
+mali                   U02M3T3RQJF        mali@groovejones.com                               deleted   
+marco.ditimoteo        U01U3PTJCJC        marco.ditimoteo@studioevil.com                               restricted
+marina                 U04QHLX82TC        marina@groovejones.com                             deleted   
+mathews                U05K1QTLW87        mathews@groovejones.com                                      restricted
+matt059                UEW7L7VFS          matt@groovejones.com                               deleted   
+mattallenfisher        U01CPG4FQ9K        mattallenfisher@gmail.com                          deleted   
+matthew                U09C86SDYDR        matthew@groovejones.com                                      restricted
+mattwilson             U26T00GLR          mattwilson@velatura.com                            deleted   
+maxwell                U01V363BX5Z        maxwell@groovejones.com                            deleted   
+mbroden                UBMA21GMV          mbroden@gmail.com                                  deleted   
+mc                     U6EJ9C4EL          mchristian@fromthefuturegames.com                  deleted   
+meagan                 U698B5U8P          meaganwaggoner@gmail.com                           deleted   
+melissa                USN0G1KM5          melissa@groovejones.com                            deleted   
+michael                UBADH872S          michael@groovejones.com                                      restricted
+michael550             UTHSGHB4L          michael@scott-howell.com                                     restricted
+microsoft_power_platf  U0577VA77F0  bot                                                                
+microsoft_teams_calls  U076XFHC4RZ  bot                                                                
+miguel                 UCF5NH5H6          miguel@groovejones.com                             deleted   
+mike                   U066V96EVU1        mike@groovejones.com                                         restricted
+mikkel                 UTXCEUZFG          mikkel@groovejones.com                             deleted   
+milan                  URP526Q3Z          milan@groovejones.com                              deleted   
+miro                   U026L6E9X4J  bot                                                                
+mkanui                 U02FQ3X4NEN        mkanui@groovejones.com                                       
+mlewis                 U02SAV7AP6K        mlewis@groovejones.com                             deleted   
+mlopez05               U0932E3QWH4        mlopez05@its.jnj.com                                         restricted
+mmarzolf               U02M8L5AY3C        mmarzolf@groovejones.com                           deleted   
+mmasters               U02UQN1NH7T        mmasters@groovejones.com                                     
+moncef                 U04C0U7LC8Y        moncef@groovejones.com                             deleted   
+monday_beta            U043YFQMXM0  bot                                                                
+mondaycom              U03Q5M8FGE7  bot                                                                
+monte                  U079C6FKCSU        monte@groovejones.com                                        
+mperry                 UK74F7A04          mperry@groovejones.com                             deleted   
+mr.elliottjohnson      UA6STMG2Z          mr.elliottjohnson@gmail.com                                  
+mrodriguez             U025X4M33CK        marco@groovejones.com                                        restricted
+mtidd                  U02DF3XER8Q        mtidd@groovejones.com                                        restricted
+naeem                  U01VD94BMEC        naeem@groovejones.com                                        
+nathan                 U057B8J656G        nathan@groovejones.com                                       restricted
+ncastelli              U02JU7VQ4CF        ncastelli@fourhcouncil.edu                         deleted   
+neumann81              U697XEA5U          scott.michael.neumann@gmail.com                    deleted   
+nferrari               U02SG3A77EE        nferrari@groovejones.com                           deleted   
+nicholas               U0906KR1WF3        nicholas@groovejones.com                                     restricted
+nick                   U9P4RUM4L          nharvey@groovejones.com                            deleted   
+nick637                UU5HQPVJR          nick@island-fever.com                              deleted   
+nickallenreed          UEZHUNM8E          nickallenreed@gmail.com                            deleted   
+nicolestevens          U2XMECVCP          nicolestevens27@gmail.com                                    restricted
+nigel                  UBAQPDETE          nigel@groovejones.com                              deleted   
+nmomoh                 U052FSZV7A6        nobert@groovejones.com                                       restricted
+notion                 U0812N0N1T3  bot                                                                
+notion_ai              U09BQJJFX55  bot                                                      deleted   
+odominique             U016G6ZG53R        odominique@salesforce.com                          deleted   
+onedrive_sharepoint    U0353USK8E5  bot                                                                
+osv                    U02GG2YLV63        osv@211.ru                                         deleted   
+outlook_calendar       UJP4KBLUE    bot                                                                
+paltstatt              UD2NVUG65          paltstatt@gmail.com                                deleted   
+parker                 U05BY0A8NCD        parker@groovejones.com                                       restricted
+paste                  U88USA2V9    bot                                                                
+patrick                U0733TCTE9H        patrick@groovejones.com                                      restricted
+paul                   UP6U5LBDJ          paul@medcalf.com                                   deleted   
+pedro_orona            U6ASCABH6          pedroaorona9@gmail.com                             deleted   
+penn                   U02CT1TPP2L        penn@houdini.studio                                deleted   
+pepsi_gladiator_bot_f  U07HENPBJE4  bot                                                                
+phineas                U01HJ0RMDKR        phineas@groovejones.com                                      restricted
+phineascarb            U01HHRX1WR5        phineascarb@gmail.com                              deleted   
+pholyavkin             U02MYBB4LAU        pholyavkin@groovejones.com                                   restricted
+pipedrive_channel_cre  U0832B2EYQ7  bot                                                      deleted   
+pocket                 UENN4PVJR    bot                                                      deleted   
+poojapasawala          U05T54YS5RD        pooja@groovejones.com                                        restricted
+prashan                U040EMGH0KV        prashan@groovejones.com                            deleted   
+pratik                 U07G6UVP3BP        pratik@tikilabs.xyz                                          restricted
+prestonthorpwhite      UURRP7USH          prestonthorpwhite@gmail.com                        deleted   
+pwierenga              U05RARR3UBZ        pwierenga@groovejones.com                                    restricted
+q                      U08V0J9HQPM  bot                                                                
+qa_tester              U1YNKSBN1          groovejonesphone@gmail.com                         deleted   
+raf                    UEJUGSJN7          raf@groovejones.com                                deleted   
+rafael                 UEC6DQH19          rafael@groovejones.com                             deleted   
+rahil                  U09HPJZ5KBQ        rahil@systato.com                                            restricted
+ram                    U06QCVC2ZSM        ram@groovejones.com                                deleted   
+randy                  U041PD75UVD        rkeller@groovejones.com                            deleted   
+rdesmond               U0107P29MLY        rhino4009@gmail.com                                deleted   
+rdonkala               U04VBT4S8P9        rajasekhar0790@gmail.com                           deleted   
+rebecca                UCVHRLR9B          rebecca@groovejones.com                            deleted   
+regev                  U04E6PCHM3M        regev@groovejones.com                              deleted   
+resqueda               U02MYRXS55L        resqueda@groovejones.com                           deleted   
+rfelton                U017LQ3U95E        rfelton@salesforce.com                             deleted   
+ricardo                U05N5D7F35F        ricardo@groovejones.com                            deleted   
+richard                U97L20GPM          richard@groovejones.com                            deleted   
+riley                  U0228S8HS92        riley@groovejones.com                              deleted   
+rnm15                  U013JN3JEEA        rnm15@hotmail.com                                  deleted   
+robert                 U044M9GU8FQ        rob@groovejones.com                                          restricted
+robin                  U052LF7LGFM        robin@groovejones.com                                        restricted
+robyngramly            U01FUJVRM7Y        robyngramly@gmail.com                              deleted   
+rostislav.shiryakov    UU01FASQ1          rostislav.shiryakov@softeq.com                               restricted
+ruben                  U01393AHWMV        ruben@groovejones.com                              deleted   
+ryan                   U08135YAJFN        ryan@groovejones.com                                         restricted
+ryan.petzke            UUL3S362V          ryan.petzke@idealindustries.com                              restricted
+sai                    U06NKSEFPK2        sai@groovejones.com                                deleted   
+sallen                 U3V3N71CZ          seallen@gmail.com                                  deleted   
+sam                    U066249JMBR        sam@groovejones.com                                          restricted
+samshafikart           UURMU2FGD          samshafikart@gmail.com                             deleted   
+samuel.jaros           UT1H7GH4G          Samuel.Jaros@idealindustries.com                             restricted
+samuelperinart         U04SDKCJJJ2        samuelperinart@gmail.com                                     restricted
+saschahenrichs         U49S185HB          sascha.henrichs@gmail.com                          deleted   
+savenkobox             U010NE8MMKJ        savenkobox@gmail.com                               deleted   
+sc14rk                 U911Y0CN4          sc14rk@gmail.com                                   deleted   
+sclark                 U021Z9G2U3A        sclark@groovejones.com                             deleted   
+scoobybot              U07AB1AAUDV  bot                                                                
+scott                  U02P52Q25BP        scott@scott-howell.com                             deleted   
+scott134               U038LG8UK6F        scott@groovejones.com                                        
+sean                   UDC219T6J          shadeler@groovejones.com                           deleted   
+sean279                U04H7C8UTR8        sean@groovejones.com                                         restricted
+sestrada               UV3861X37          sestrada@groovejones.com                           deleted   
+seth.monsevalles       U05QABDPPL7        seth.monsevalles@gmail.com                         deleted   
+seya                   U01DL0MJESC        seya@studioevil.com                                          restricted
+shah.tashkeel          UAD575VSS          shah.tashkeel@gmail.com                            deleted   
+shane                  U06MA6QUMK9        shane@groovejones.com                                        restricted
+shawn                  UAPUP65FX          shawn@groovejones.com                                        
+shawn879               U05BSGNJD4M        shawn@scott-howell.com                             deleted   
+shess                  U65HCTC90          shess@fromthefuturegames.com                       deleted   
+sierra                 U020UCXDTUP        sierra@groovejones.com                             deleted   
+simplepoll             U0190PPU5UZ  bot                                                                
+skankerzero            U26DB3BHA          skankerzero@gmail.com                              deleted   
+slackbot               USLACKBOT                                                                       
+slayman1               U0932E3RTHU        slayman1@its.jnj.com                                         restricted
+smartsheet             U0122L05657  bot                                                      deleted   
+smoakes                UEMGLSEES          smoakes@groovejones.com                            deleted   
+sotightrightnow        U04NAG2F4HZ        sotightrightnow@gmail.com                          deleted   
+speter31               U092PG16W6P        SPeter31@ITS.JNJ.com                                         restricted
+srivera                U01NJCMGF28        srivera@groovejones.com                            deleted   
+srogers                U05MUALN04R        srogers@fourhcouncil.edu                           deleted   
+sruengpatana           U02Q18YMKB9        sruengpatana@groovejones.com                       deleted   
+ssterl                 U07S4LPHTCM        ssterling@scott-howell.com                                   restricted
+standup_bot            U03777QP0RG  bot                                                                
+standupbot             U036SNY720P  bot                                                                
+staylor                U42CPSWG5          stephen.taylor.dev@gmail.com                       deleted   
+stefan.babick          UBXKWSA03          stefan.babick@gmail.com                            deleted   
+stephen                U080B9V6F3J        stephen@groovejones.com                                      
+steve.palaia           UL7M3UDLY          steve.palaia@gmail.com                             deleted   
+steven                 UTUJ19WJW          steven@groovejones.com                                       restricted
+straxler               U0179HS7SBT        straxler@salesforce.com                            deleted   
+t_hunt                 U26DWV07N          rhinokio@gmail.com                                 deleted   
+tarry                  U02C7E855AP        tarry@groovejones.com                              deleted   
+taskonbot              U012K3222E5  bot                                                      deleted   
+taylor                 U011BN81PEK        taylor@groovejones.com                             deleted   
+tbrandt                U02G28NBJUQ        thornebrandt@gmail.com                                       restricted
+tbrandt447             U042R3WEBU0        tbrandt@groovejones.com                            deleted   
+tbrandta               U02PKM0Q8SY        tbrandta@groovejones.com                           deleted   
+tdepala                U016WUT6SAE        tdepala@salesforce.com                             deleted   
+tehseen                U09G7QS9932        tehseen@groovejones.com                                      restricted
+tempo                  UEFAY0004    bot                                                      deleted   
+test_c_dotnet          U06A87E7FQW  bot                                                                
+tharper                U02BGJT8FHD        tharper@groovejones.com                            deleted   
+theodoros              U01V6JBBFEW        teekay1994@gmail.com                                         restricted
+tiffany                U9NKEG9SN          tiffany@groovejones.com                                      
+timy                   U01FHJ7NXF1  bot                                                                
+tina                   U4VTB1XS9          tina@groovejones.com                               deleted   
+tmay                   U02KRPL519U        tmay@groovejones.com                               deleted   
+todoist                U024Y4A4GJC  bot                                                                
+tom                    UBAPY3RQU          tom@groovejones.com                                deleted   
+tomaberg59             U02CD8YAZK4        tomaberg59@gmail.com                                         restricted
+tommurphy              U02QSKME4KT        tommurphy@Mightycow.com                            deleted   
+tony                   U02BWLBNZCN        tony@houdini.studio                                deleted   
+treed                  UV3KB9QE9          treed@groovejones.com                              deleted   
+trello                 U5LNYN4B1    bot                                                                
+trevor                 U05H4LXTS2E        trevor@groovejones.com                                       
+troy                   U98DTUPJN          troy@groovejones.com                               deleted   
+tschatz                U02PL3RF23Z        tschatz@groovejones.com                            deleted   
+tvandewalle            U87LAM1N3          tvandewalle@fromthefuturegames.com                 deleted   
+tyler                  U9CNGNB6H          tyler@groovejones.com                              deleted   
+tylerreed3d            UV0NZ2BRN          tylerreed3d@gmail.com                              deleted   
+tylertomaseski         UUM8926BG          tylertomaseski@gmail.com                           deleted   
+unitydev               UR04ZB945          unitydev@mikerandrup.com                           deleted   
+uqaiser                U02JU7S5G87        uqaiser@fourhcouncil.edu                           deleted   
+vaboytes               U06N6KVLRS8        vaboytes@groovejones.com                           deleted   
+vercel                 U09CL65N8KG  bot                                                                
+victor                 U027YTYTX7U        victor@groovejones.com                             deleted   
+victoria               U01MUCB4AQ3        victoria@groovejones.com                                     restricted
+vknai                  U02B3V41DB8        vknai@groovejones.com                              deleted   
+vperez                 U02BYRC89AL        vperez@groovejones.com                                       restricted
+vr                     U022EC5TVFC        vr@groovejones.com                                 deleted   
+vyu                    U02FS0CG546        vyu@groovejones.com                                deleted   
+wade                   U08F797TCPM        wade@groovejones.com                               deleted   
+walter                 U05JFPH199R        walter@groovejones.com                                       restricted
+wb_bot_a0135ae9k61     U013WGT84JU  bot                                                                
+wb_bot_a0136t1r951     U012RUSBNPR  bot                                                                
+wb_bot_a0138hmkxs7     U0131KBUDL6  bot                                                      deleted   
+wb_bot_a013k9w17q9     U013K9W1H09  bot                                                      deleted   
+wb_bot_a013kacj0qz     U013CSQKGA0  bot                                                                
+wb_bot_a013wgn4v0q     U0136MEQ7MY  bot                                                      deleted   
+wb_bot_a0146sqgpt9     U014L7ZQDK7  bot                                                                
+wb_bot_a017enhm929     U017UNF1VRP  bot                                                      deleted   
+wb_bot_a01dmflsjmb     U01D9RV1SH5  bot                                                      deleted   
+wb_bot_a02817wtqc8     U0278GB5V7X  bot                                                                
+wb_bot_a02grlg245b     U02GMTXSG22  bot                                                      deleted   
+wb_bot_a02gujfd2af     U02GUJFDYKD  bot                                                      deleted   
+wb_bot_a02guk7my5r     U02GWQDSP0C  bot                                                      deleted   
+wb_bot_a02gukch7mh     U02GUKCJ22F  bot                                                      deleted   
+wb_bot_a02gwrvqkgu     U02GULCEMHQ  bot                                                      deleted   
+wb_bot_a02h77clnnm     U02GMSMFWT0  bot                                                      deleted   
+wb_bot_a02h77knnn5     U02GRKCQM1T  bot                                                      deleted   
+wb_bot_a02m2hrrc73     U02LS6KABHA  bot                                                      deleted   
+wb_bot_a02mb43a2f8     U02M35WMC4X  bot                                                                
+wb_bot_a02merk5jjh     U02M358BBUP  bot                                                      deleted   
+wb_bot_a02mfal3tra     U02N2PY3V8Q  bot                                                                
+wb_bot_a02rlch4y3f     U02SD2EP2NL  bot                                                                
+wb_bot_a02utkfjlkf     U02UFU5MVK9  bot                                                                
+wb_bot_a056xhf7bfx     U057D53E52M  bot                                                                
+wb_bot_a057qa0rmjl     U0573402Y84  bot                                                                
+wf_bot_a05k36knxl6     U05KNFY9T89  bot                                                                
+wf_bot_a05k6kltxd3     U05K9EX74AX  bot                                                                
+wf_bot_a05v3th84uw     U06023R7DU5  bot                                                                
+wf_bot_a05vae4b98b     U060HBM2X33  bot                                                                
+wf_bot_a05vd0uk9ng     U05V4EAK8T1  bot                                                                
+wf_bot_a069xcjjsbf     U06AD07TB4Z  bot                                                                
+wf_bot_a078bjb33bq     U078WT21XCH  bot                                                                
+wf_bot_a07dgp1p78t     U07DGSB3BR8  bot                                                                
+wf_bot_a083gukj534     U0832DSJAS3  bot                                                                
+wf_bot_a08g0dwgspn     U08FYGF42JE  bot                                                                
+wf_bot_a098g7kv8bg     U098G7RQ4KG  bot                                                                
+wf_bot_a098g7l9dqe     U098G7NRQDC  bot                                                                
+whitney                UU97Q60G7          whitney@groovejones.com                            deleted   
+whunter                U02G28N9RDE        whunter@groovejones.com                                      restricted
+wjbarber82             U04LKLLDZ2S        wbarber@groovejones.com                                      restricted
+wmaxwell03             U012ZLJNKFH        wmaxwell03@yahoo.com                                         
+wpruett                U017L3BRDGU        wpruett@umc.edu                                    deleted   
+wrangle                U0573RBDMA6  bot                                                                
+wt                     U03P07G2JKW        wt@groovejones.com                                 deleted   
+wwise                  U02F9CC274P        wwise@groovejones.com                                        restricted
+xavier1095             UP6K782MD          Xavier1095@gmail.com                               deleted   
+xevian                 U01DN82RB6U        xevian@studioevil.com                                        restricted
+yeunchul               U08135NN3A8        yeunchul@groovejones.com                                     restricted
+yngarthewise           U8NDCKJF8          yngarthewise@gmail.com                             deleted   
+zachary                U04FMDJ7VEC        zachary@groovejones.com                                      restricted
+zachary.cipra          U013H0E48SY        zachary.cipra@idealindustries.com                            restricted
+zahra                  UU3J2G9PH          zahra@zahra-alnaib.com                             deleted   
+zapier                 U01BM1JPFAR  bot                                                                
+zcorley                U6WFDEG2F          zcorley@fromthefuturegames.com                     deleted   
+zendesk                U018UL45D2M  bot                                                      deleted   
+zoey                   U04AAT0EH38        zoey@groovejones.com                                         restricted
+zoom                   UK6PM8B1R    bot                                                                

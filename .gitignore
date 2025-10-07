@@ -70,6 +70,8 @@ dmypy.json
 # Slack export files (user should store these outside the repo)
 exports/
 *.json
+!tests/fixtures/*.json
+!tests/fixtures/**/*.json
 !.agent-os/**/*.json
 
 # Backup files

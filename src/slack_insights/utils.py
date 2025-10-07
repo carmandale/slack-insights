@@ -4,7 +4,7 @@ Utility functions for Slack Insights.
 Shared helpers for date parsing, formatting, and common operations.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def parse_slack_timestamp(ts: str) -> datetime:
@@ -17,7 +17,7 @@ def parse_slack_timestamp(ts: str) -> datetime:
 	Returns:
 		datetime object
 	"""
-	return datetime.fromtimestamp(float(ts))
+	return datetime.fromtimestamp(float(ts), tz=timezone.utc)
 
 
 def format_date(dt: datetime) -> str:

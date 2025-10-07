@@ -17,16 +17,16 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 1.6 Configure pytest, ruff, and mypy
   - [x] 1.7 Verify virtual environment and dependencies install correctly
 
-- [ ] 2. Database Foundation
-  - [ ] 2.1 Write tests for database initialization (test_database.py)
-  - [ ] 2.2 Create database.py module with init_database()
-  - [ ] 2.3 Implement conversations table schema
-  - [ ] 2.4 Implement action_items table schema
-  - [ ] 2.5 Add indexes for query performance
-  - [ ] 2.6 Create migration script (migrations/001_initial_schema.sql)
-  - [ ] 2.7 Implement insert_conversation() with duplicate detection
-  - [ ] 2.8 Implement insert_action_item() with foreign key handling
-  - [ ] 2.9 Verify all database tests pass
+- [x] 2. Database Foundation
+  - [x] 2.1 Write tests for database initialization (test_database.py)
+  - [x] 2.2 Create database.py module with init_database()
+  - [x] 2.3 Implement conversations table schema
+  - [x] 2.4 Implement action_items table schema
+  - [x] 2.5 Add indexes for query performance
+  - [x] 2.6 Create migration script (migrations/001_initial_schema.sql)
+  - [x] 2.7 Implement insert_conversation() with duplicate detection
+  - [x] 2.8 Implement insert_action_item() with foreign key handling
+  - [x] 2.9 Verify all database tests pass
 
 - [ ] 3. SlackDump JSON Parser
   - [ ] 3.1 Write tests for parser (test_parser.py)

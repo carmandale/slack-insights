@@ -6,7 +6,7 @@ Tests Claude AI extraction on Dan's Slack conversations
 
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from anthropic import Anthropic
 
 # Load environment variables
@@ -31,10 +31,10 @@ def format_messages_for_claude(messages):
 	"""Format messages into readable text for Claude"""
 	formatted = []
 	for msg in messages:
-		ts = datetime.fromtimestamp(float(msg['ts']))
+		ts = datetime.fromtimestamp(float(msg["ts"]), tz=timezone.utc)
 		user = "Dan" if msg.get('user') == "U2X1504QH" else "Dale"
 		text = msg.get('text', '')
-		formatted.append(f"[{ts.strftime('%Y-%m-%d %H:%M')}] {user}: {text}")
+		formatted.append(f"[{ts.strftime('%Y-%m-%d %H:%M')} UTC] {user}: {text}")
 
 	return "\n".join(formatted)
 
