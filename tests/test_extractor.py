@@ -307,10 +307,10 @@ def test_extract_action_items_server_error_retry(
 	# Create a generic APIError with status_code attribute
 	server_error = anthropic.InternalServerError(
 		"Server error",
-		response=Mock(status_code=529),
+		response=Mock(status_code=500),
 		body={"error": {"message": "Server error"}},
 	)
-	server_error.status_code = 529
+	server_error.status_code = 500
 	mock_client.messages.create.side_effect = [
 		server_error,
 		mock_claude_response,

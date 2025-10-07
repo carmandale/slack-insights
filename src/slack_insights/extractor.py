@@ -40,9 +40,10 @@ def format_messages_for_claude(messages: list[dict]) -> str:
 
 		# Format timestamp as readable date
 		try:
-			dt = datetime.fromtimestamp(timestamp)
+			ts = float(timestamp)
+			dt = datetime.fromtimestamp(ts)
 			date_str = dt.strftime("%Y-%m-%d %H:%M")
-		except (ValueError, OSError):
+		except (ValueError, OSError, TypeError):
 			date_str = "Unknown date"
 
 		lines.append(f"[{date_str}] {username}: {text}")
@@ -184,6 +185,9 @@ def extract_action_items(
 			)
 
 			# Extract text from response
+			if not response or not response.content or len(response.content) == 0:
+				return []
+
 			first_block = response.content[0]
 			if hasattr(first_block, "text"):
 				response_text = first_block.text

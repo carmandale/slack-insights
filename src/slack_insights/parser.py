@@ -95,9 +95,14 @@ def parse_message(
 	if "thread_ts" in raw_message and raw_message["thread_ts"]:
 		try:
 			thread_ts = float(raw_message["thread_ts"])
-		except (ValueError, TypeError):
-			# If thread_ts is invalid, just skip it
-			pass
+		except (ValueError, TypeError) as e:
+			# Log warning for invalid thread_ts but continue parsing
+			import warnings
+			warnings.warn(
+				f"Invalid thread_ts '{raw_message.get('thread_ts')}' "
+				f"in message {raw_message.get('ts')}: {e}"
+			)
+			thread_ts = None
 
 	# Extract message text (default to empty string if missing)
 	message_text = raw_message.get("text", "")
@@ -105,12 +110,13 @@ def parse_message(
 	# Determine message type
 	message_type = raw_message.get("type", "message")
 
-	# Username lookup (placeholder for future implementation)
+	# Username lookup (not yet implemented)
 	username = None
 	if users_json_path:
-		# TODO: Implement username lookup from users.json
-		# For now, just return None
-		pass
+		raise NotImplementedError(
+			"Username lookup from users.json is not yet implemented. "
+			"This feature is planned for a future release."
+		)
 
 	# Preserve raw JSON for potential reprocessing
 	raw_json = json.dumps(raw_message)
