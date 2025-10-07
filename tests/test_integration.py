@@ -161,15 +161,21 @@ def test_query_filters_work_correctly(sample_conversation_file, temp_db_path, mo
 		mock_extract.return_value = [
 			{
 				"task": "Open task",
-				"assigner": "Dan",
+				"assigner": "Dan Ferguson",
+				"assignee": "Dale Carman",
 				"status": "open",
+				"urgency": "high",
 				"date": "2017-01-31",
+				"context": "This task is still open",
 			},
 			{
 				"task": "Completed task",
-				"assigner": "Dan",
+				"assigner": "Dan Ferguson",
+				"assignee": "Dale Carman",
 				"status": "completed",
+				"urgency": "low",
 				"date": "2017-01-31",
+				"context": "This task was completed",
 			},
 		]
 		runner.invoke(app, ["analyze"])
