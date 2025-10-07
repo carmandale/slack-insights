@@ -38,16 +38,16 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 3.7 Add error handling for malformed JSON
   - [x] 3.8 Verify all parser tests pass
 
-- [ ] 4. Anthropic API Integration
-  - [ ] 4.1 Write tests for extractor with mocked API (test_extractor.py)
-  - [ ] 4.2 Create extractor.py module
-  - [ ] 4.3 Implement format_messages_for_claude()
-  - [ ] 4.4 Implement build_extraction_prompt()
-  - [ ] 4.5 Implement call_claude_with_retry() with exponential backoff
-  - [ ] 4.6 Implement parse_extraction_response() for JSON parsing
-  - [ ] 4.7 Implement extract_action_items() main function
-  - [ ] 4.8 Add error handling (auth, rate limit, server errors)
-  - [ ] 4.9 Verify all extractor tests pass
+- [x] 4. Anthropic API Integration
+  - [x] 4.1 Write tests for extractor with mocked API (test_extractor.py)
+  - [x] 4.2 Create extractor.py module
+  - [x] 4.3 Implement format_messages_for_claude()
+  - [x] 4.4 Implement build_extraction_prompt()
+  - [x] 4.5 Implement call_claude_with_retry() with exponential backoff
+  - [x] 4.6 Implement parse_extraction_response() for JSON parsing
+  - [x] 4.7 Implement extract_action_items() main function
+  - [x] 4.8 Add error handling (auth, rate limit, server errors)
+  - [x] 4.9 Verify all extractor tests pass
 
 - [ ] 5. CLI Import Command
   - [ ] 5.1 Write tests for CLI import command (test_cli.py)
