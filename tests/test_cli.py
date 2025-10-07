@@ -120,6 +120,8 @@ def test_import_command_creates_database(sample_slackdump_file, temp_db, monkeyp
 
 def test_import_command_idempotent(sample_slackdump_file, temp_db, monkeypatch):
 	"""Test that re-importing same file doesn't create duplicates."""
+	import sqlite3
+
 	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db)
 
 	# Import once
@@ -130,7 +132,14 @@ def test_import_command_idempotent(sample_slackdump_file, temp_db, monkeypatch):
 	result2 = runner.invoke(app, ["import", sample_slackdump_file])
 	assert result2.exit_code == 0
 
-	# Verify no duplicates (would need to check DB, but for now just verify no error)
+	# Verify no duplicates by checking database
+	conn = sqlite3.connect(temp_db)
+	cursor = conn.execute("SELECT COUNT(*) FROM conversations")
+	count = cursor.fetchone()[0]
+	conn.close()
+
+	# Should have exactly 2 messages (from sample_slackdump_file fixture)
+	assert count == 2, f"Expected 2 messages, found {count} (duplicates created!)"
 
 
 def test_analyze_command_no_database():
@@ -144,8 +153,11 @@ def test_analyze_command_no_database():
 def test_query_person_command_basic():
 	"""Test query-person command basic invocation."""
 	result = runner.invoke(app, ["query-person", "Dan"])
-	# Will show no results until data is imported, but shouldn't crash
-	assert result.exit_code == 0 or "error" in result.stdout.lower()
+	# Stub implementation should succeed
+	if result.exit_code != 0:
+		assert "error" in result.stdout.lower(), "Command failed without error message"
+	else:
+		assert len(result.stdout) > 0, "Command succeeded but produced no output"
 
 
 def test_query_person_command_with_filters():
@@ -153,4 +165,8 @@ def test_query_person_command_with_filters():
 	result = runner.invoke(
 		app, ["query-person", "Dan", "--status", "open", "--recent"]
 	)
-	assert result.exit_code == 0 or "error" in result.stdout.lower()
+	# Stub implementation should succeed
+	if result.exit_code != 0:
+		assert "error" in result.stdout.lower(), "Command failed without error message"
+	else:
+		assert len(result.stdout) > 0, "Command succeeded but produced no output"
