@@ -80,13 +80,13 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 7.8 Verify all query tests pass
   - [x] 7.9 Test query-person Dan with various filters
 
-- [ ] 8. Integration & End-to-End Testing
-  - [ ] 8.1 Write integration tests (test_integration.py)
-  - [ ] 8.2 Test full workflow: import → analyze → query
-  - [ ] 8.3 Test idempotency (re-importing same file)
-  - [ ] 8.4 Verify test coverage >80% (pytest --cov)
-  - [ ] 8.5 Fix any failing tests or coverage gaps
-  - [ ] 8.6 Run full test suite and verify all pass
+- [x] 8. Integration & End-to-End Testing
+  - [x] 8.1 Write integration tests (test_integration.py)
+  - [x] 8.2 Test full workflow: import → analyze → query
+  - [x] 8.3 Test idempotency (re-importing same file)
+  - [x] 8.4 Verify test coverage >80% (pytest --cov)
+  - [x] 8.5 Fix any failing tests or coverage gaps
+  - [x] 8.6 Run full test suite and verify all pass
 
 - [ ] 9. Documentation & Polish
   - [ ] 9.1 Create README.md with installation instructions
