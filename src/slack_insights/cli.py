@@ -114,6 +114,7 @@ def analyze(
 	assigner: str = typer.Option(None, "--assigner", help="Filter by assigner name"),
 ) -> None:
 	"""Analyze imported conversations and extract action items using Claude API."""
+	conn = None
 	try:
 		db_path = get_db_path()
 
@@ -184,6 +185,12 @@ def analyze(
 							}
 							insert_action_item(conn, action_item)
 							total_items_extracted += 1
+						else:
+							# Log warning for skipped items
+							console.print(
+								f"\n[yellow]Warning:[/yellow] Skipping item without "
+								f"conversation_id: {item.get('task', 'Unknown task')}"
+							)
 
 					progress.update(task, advance=1)
 
@@ -191,8 +198,6 @@ def analyze(
 					console.print(f"\n[yellow]Warning:[/yellow] Batch {batch_num} failed: {e}")
 					progress.update(task, advance=1)
 					continue
-
-		conn.close()
 
 		# Display summary
 		console.print(f"\n[green]✓[/green] Analysis complete!")
@@ -206,6 +211,9 @@ def analyze(
 	except Exception as e:
 		console.print(f"[red]Error:[/red] {e}")
 		raise typer.Exit(code=1)
+	finally:
+		if conn:
+			conn.close()
 
 
 @app.command()
@@ -215,6 +223,7 @@ def query_person(
 	status: str = typer.Option(None, "--status", help="Filter by status (open/completed)"),
 ) -> None:
 	"""Query action items by person name."""
+	conn = None
 	try:
 		db_path = get_db_path()
 
@@ -229,8 +238,6 @@ def query_person(
 		# Query action items
 		results = query_by_person(conn, name, status=status, recent=recent)
 
-		conn.close()
-
 		# Format and display results
 		table = format_results_as_table(results)
 		console.print(f"\n[cyan]Action items from:[/cyan] {name}\n")
@@ -242,6 +249,9 @@ def query_person(
 	except Exception as e:
 		console.print(f"[red]Error:[/red] {e}")
 		raise typer.Exit(code=1)
+	finally:
+		if conn:
+			conn.close()
 
 
 if __name__ == "__main__":

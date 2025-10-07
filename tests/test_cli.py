@@ -150,7 +150,8 @@ def test_analyze_command_with_data(
 	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db)
 
 	# Import test data first
-	runner.invoke(app, ["import", sample_slackdump_file])
+	import_result = runner.invoke(app, ["import", sample_slackdump_file])
+	assert import_result.exit_code == 0, f"Import failed: {import_result.stdout}"
 
 	# Mock Claude API response
 	mock_extract.return_value = [
