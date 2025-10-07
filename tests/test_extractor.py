@@ -336,8 +336,11 @@ def test_extract_action_items_empty_messages(mock_anthropic_class):
 	assert items == []
 
 
-def test_extract_action_items_missing_api_key():
+def test_extract_action_items_missing_api_key(monkeypatch):
 	"""Test error when API key is not provided."""
+	# Unset environment variable to test missing key scenario
+	monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+
 	with pytest.raises(ExtractorError, match="API key"):
 		extract_action_items([{"text": "test"}], api_key=None)
 
