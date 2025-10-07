@@ -28,15 +28,15 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 2.8 Implement insert_action_item() with foreign key handling
   - [x] 2.9 Verify all database tests pass
 
-- [ ] 3. SlackDump JSON Parser
-  - [ ] 3.1 Write tests for parser (test_parser.py)
-  - [ ] 3.2 Create parser.py module
-  - [ ] 3.3 Implement parse_slackdump() to load JSON file
-  - [ ] 3.4 Implement parse_message() to extract fields
-  - [ ] 3.5 Handle threaded messages (thread_ts)
-  - [ ] 3.6 Handle missing optional fields gracefully
-  - [ ] 3.7 Add error handling for malformed JSON
-  - [ ] 3.8 Verify all parser tests pass
+- [x] 3. SlackDump JSON Parser
+  - [x] 3.1 Write tests for parser (test_parser.py)
+  - [x] 3.2 Create parser.py module
+  - [x] 3.3 Implement parse_slackdump() to load JSON file
+  - [x] 3.4 Implement parse_message() to extract fields
+  - [x] 3.5 Handle threaded messages (thread_ts)
+  - [x] 3.6 Handle missing optional fields gracefully
+  - [x] 3.7 Add error handling for malformed JSON
+  - [x] 3.8 Verify all parser tests pass
 
 - [ ] 4. Anthropic API Integration
   - [ ] 4.1 Write tests for extractor with mocked API (test_extractor.py)
