@@ -98,6 +98,7 @@ def parse_message(
 		except (ValueError, TypeError) as e:
 			# Log warning for invalid thread_ts but continue parsing
 			import warnings
+
 			warnings.warn(
 				f"Invalid thread_ts '{raw_message.get('thread_ts')}' "
 				f"in message {raw_message.get('ts')}: {e}"

@@ -5,7 +5,6 @@ Handles database queries and result formatting using rich tables.
 """
 
 import sqlite3
-from datetime import datetime
 from typing import Any, Optional
 
 from rich.table import Table

@@ -88,14 +88,14 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 8.5 Fix any failing tests or coverage gaps
   - [x] 8.6 Run full test suite and verify all pass
 
-- [ ] 9. Documentation & Polish
-  - [ ] 9.1 Create README.md with installation instructions
-  - [ ] 9.2 Document CLI commands with examples
-  - [ ] 9.3 Add troubleshooting guide
-  - [ ] 9.4 Update .env.example with all required keys
-  - [ ] 9.5 Add docstrings to all public functions
-  - [ ] 9.6 Run ruff format and ruff check
-  - [ ] 9.7 Verify code style and type hints
+- [x] 9. Documentation & Polish
+  - [x] 9.1 Create README.md with installation instructions
+  - [x] 9.2 Document CLI commands with examples
+  - [x] 9.3 Add troubleshooting guide
+  - [x] 9.4 Update .env.example with all required keys
+  - [x] 9.5 Add docstrings to all public functions
+  - [x] 9.6 Run ruff format and ruff check
+  - [x] 9.7 Verify code style and type hints
 
 - [ ] 10. Phase 1 Validation
   - [ ] 10.1 Import Dan's full conversation history (9,960 messages)

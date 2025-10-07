@@ -35,21 +35,61 @@ cp .env.example .env
 
 ## Usage
 
+### Quick Start
+
 ```bash
-# Import Slack conversations
+# 1. Import Slack conversations from SlackDump JSON export
 slack-insights import dan-messages/D3Y7V95DX.json
 
-# Analyze and extract action items
+# 2. Analyze and extract action items using Claude AI
 slack-insights analyze
 
-# Query action items from Dan
+# 3. Query action items from a specific person
 slack-insights query-person Dan
+```
 
-# Filter by status
+### Query Options
+
+```bash
+# Filter by status (open or completed)
 slack-insights query-person Dan --status open
+slack-insights query-person Dan --status completed
 
-# Show only recent (last 7 days)
+# Show only recent items (last 7 days)
 slack-insights query-person Dan --recent
+
+# Combine filters
+slack-insights query-person Dan --status open --recent
+```
+
+### Advanced Options
+
+```bash
+# Analyze with custom batch size (default: 100 messages per batch)
+slack-insights analyze --batch-size 50
+
+# Filter analysis by assigner name
+slack-insights analyze --assigner "Dan Ferguson"
+```
+
+## Exporting Slack Data with SlackDump
+
+Before using Slack Insights, you need to export your Slack conversations:
+
+```bash
+# Install SlackDump
+brew install slackdump  # macOS
+# Or download from https://github.com/rusq/slackdump/releases
+
+# Get Slack user token
+# Visit: https://api.slack.com/custom-integrations/legacy-tokens
+# Generate token (starts with xoxp-)
+
+# Export direct messages with a specific person
+slackdump export -o dan-export.zip -dm @Dan
+
+# Extract the JSON file
+unzip dan-export.zip -d dan-messages/
 ```
 
 ## Development
@@ -75,8 +115,35 @@ uv run mypy src/
 
 MIT
 
+## Troubleshooting
+
+**Database not found error:**
+```bash
+# Ensure you've run import first
+slack-insights import <your-file.json>
+```
+
+**Invalid API key:**
+```bash
+# Check your .env file contains ANTHROPIC_API_KEY
+cat .env | grep ANTHROPIC_API_KEY
+```
+
+**No action items found:**
+- Verify data was imported: Check for `slack_insights.db` file
+- Run analyze command after import
+- Try querying with different person names (case-insensitive partial match)
+
 ## Project Status
 
 **Phase:** Phase 1 - Foundation & Basic Query
-**Status:** In Development
+**Status:** Complete (66 tests passing, 95% coverage)
 **GitHub Issue:** #1
+
+## What's Next
+
+See [roadmap.md](.agent-os/product/roadmap.md) for upcoming features:
+- Phase 2: Enhanced extraction with better categorization
+- Phase 3: Natural language queries ("what did Dan ask me to do this week?")
+- Phase 4: Summaries and reporting
+- Phase 5: Performance optimization and polish

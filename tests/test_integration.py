@@ -6,15 +6,14 @@ Tests end-to-end functionality: import -> analyze -> query
 
 import json
 import os
-import sqlite3
 import tempfile
 from unittest.mock import patch
 
 import pytest
+from typer.testing import CliRunner
 
 from slack_insights.cli import app
 from slack_insights.database import init_database
-from typer.testing import CliRunner
 
 runner = CliRunner()
 
@@ -65,9 +64,7 @@ def temp_db_path():
 		os.unlink(path)
 
 
-def test_full_workflow_import_analyze_query(
-	sample_conversation_file, temp_db_path, monkeypatch
-):
+def test_full_workflow_import_analyze_query(sample_conversation_file, temp_db_path, monkeypatch):
 	"""Test complete workflow: import -> analyze -> query."""
 	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db_path)
 
@@ -108,7 +105,9 @@ def test_full_workflow_import_analyze_query(
 
 		analyze_result = runner.invoke(app, ["analyze"])
 		assert analyze_result.exit_code == 0
-		assert "analyz" in analyze_result.stdout.lower() or "complete" in analyze_result.stdout.lower()
+		assert (
+			"analyz" in analyze_result.stdout.lower() or "complete" in analyze_result.stdout.lower()
+		)
 
 	# Verify action items extracted
 	conn = init_database(temp_db_path)

@@ -51,9 +51,7 @@ def format_messages_for_claude(messages: list[dict]) -> str:
 	return "\n".join(lines)
 
 
-def build_extraction_prompt(
-	messages: list[dict], assigner_name: Optional[str] = None
-) -> str:
+def build_extraction_prompt(messages: list[dict], assigner_name: Optional[str] = None) -> str:
 	"""
 	Build complete prompt for Claude API.
 

@@ -4,9 +4,8 @@ Tests for query engine.
 Tests action item querying and result formatting.
 """
 
-import sqlite3
 import tempfile
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import pytest
 

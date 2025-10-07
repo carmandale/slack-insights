@@ -156,9 +156,7 @@ def test_insert_conversation_with_thread(db_conn):
 	assert conversation_id is not None
 
 	# Verify thread_ts was stored
-	cursor = db_conn.execute(
-		"SELECT thread_ts FROM conversations WHERE id = ?", (conversation_id,)
-	)
+	cursor = db_conn.execute("SELECT thread_ts FROM conversations WHERE id = ?", (conversation_id,))
 	result = cursor.fetchone()
 	assert result[0] == 1485881960.000002
 
@@ -210,7 +208,7 @@ def test_insert_action_item_with_minimal_fields(db_conn):
 		"message_text": "Can you help?",
 		"thread_ts": None,
 		"message_type": "message",
-		"raw_json": '{}',
+		"raw_json": "{}",
 	}
 	conversation_id = insert_conversation(db_conn, message)
 
@@ -235,7 +233,7 @@ def test_get_conversation(db_conn):
 		"message_text": "Test message",
 		"thread_ts": None,
 		"message_type": "message",
-		"raw_json": '{}',
+		"raw_json": "{}",
 	}
 	conversation_id = insert_conversation(db_conn, message)
 
@@ -259,7 +257,7 @@ def test_get_action_items_by_assigner(db_conn):
 		"message_text": "Can you review the PR?",
 		"thread_ts": None,
 		"message_type": "message",
-		"raw_json": '{}',
+		"raw_json": "{}",
 	}
 	conversation_id = insert_conversation(db_conn, message)
 

@@ -53,22 +53,24 @@ def mock_claude_response():
 		content=[
 			Mock(
 				type="text",
-				text=json.dumps([
-					{
-						"task": "Review the PR",
-						"date": "2017-01-31",
-						"status": "open",
-						"urgency": "high",
-						"context": "Can you review the PR by EOD?",
-					},
-					{
-						"task": "Provide imagery for AR capabilities",
-						"date": "2017-02-01",
-						"status": "open",
-						"urgency": "normal",
-						"context": "Do you have any imagery for our AR capabilities?",
-					},
-				]),
+				text=json.dumps(
+					[
+						{
+							"task": "Review the PR",
+							"date": "2017-01-31",
+							"status": "open",
+							"urgency": "high",
+							"context": "Can you review the PR by EOD?",
+						},
+						{
+							"task": "Provide imagery for AR capabilities",
+							"date": "2017-02-01",
+							"status": "open",
+							"urgency": "normal",
+							"context": "Do you have any imagery for our AR capabilities?",
+						},
+					]
+				),
 			)
 		],
 		usage=Mock(input_tokens=1250, output_tokens=450),
@@ -130,15 +132,17 @@ def test_build_extraction_prompt_with_context():
 
 def test_parse_extraction_response_valid_json():
 	"""Test parsing valid JSON response from Claude."""
-	response_text = json.dumps([
-		{
-			"task": "Review the PR",
-			"date": "2025-10-05",
-			"status": "open",
-			"urgency": "normal",
-			"context": "Can you review the PR?",
-		}
-	])
+	response_text = json.dumps(
+		[
+			{
+				"task": "Review the PR",
+				"date": "2025-10-05",
+				"status": "open",
+				"urgency": "normal",
+				"context": "Can you review the PR?",
+			}
+		]
+	)
 
 	items = parse_extraction_response(response_text)
 

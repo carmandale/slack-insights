@@ -7,36 +7,41 @@ Tests Claude AI extraction on Dan's Slack conversations
 import json
 import os
 from datetime import datetime, timezone
+
 from anthropic import Anthropic
 
 # Load environment variables
 from dotenv import load_dotenv
+
 load_dotenv()
+
 
 def load_dan_messages(filepath, limit=50):
 	"""Load recent messages from Dan"""
-	with open(filepath, 'r') as f:
+	with open(filepath, "r") as f:
 		data = json.load(f)
 
-	messages = data['messages']
+	messages = data["messages"]
 	print(f"Total messages: {len(messages)}")
 
 	# Get most recent messages (sorted by timestamp)
-	sorted_msgs = sorted(messages, key=lambda x: float(x['ts']), reverse=True)
+	sorted_msgs = sorted(messages, key=lambda x: float(x["ts"]), reverse=True)
 	recent = sorted_msgs[:limit]
 
 	return recent
+
 
 def format_messages_for_claude(messages):
 	"""Format messages into readable text for Claude"""
 	formatted = []
 	for msg in messages:
 		ts = datetime.fromtimestamp(float(msg["ts"]), tz=timezone.utc)
-		user = "Dan" if msg.get('user') == "U2X1504QH" else "Dale"
-		text = msg.get('text', '')
+		user = "Dan" if msg.get("user") == "U2X1504QH" else "Dale"
+		text = msg.get("text", "")
 		formatted.append(f"[{ts.strftime('%Y-%m-%d %H:%M')} UTC] {user}: {text}")
 
 	return "\n".join(formatted)
+
 
 def extract_action_items(conversation_text):
 	"""Use Claude to extract action items"""
@@ -70,10 +75,11 @@ Return results as JSON array:
 	response = client.messages.create(
 		model="claude-sonnet-4-20250514",
 		max_tokens=4096,
-		messages=[{"role": "user", "content": prompt}]
+		messages=[{"role": "user", "content": prompt}],
 	)
 
 	return response.content[0].text
+
 
 def main():
 	print("=" * 60)
@@ -82,8 +88,8 @@ def main():
 	print()
 
 	# Load messages
-	messages = load_dan_messages('dan-messages/D3Y7V95DX.json', limit=100)
-	print(f"Analyzing last 100 messages...")
+	messages = load_dan_messages("dan-messages/D3Y7V95DX.json", limit=100)
+	print("Analyzing last 100 messages...")
 	print()
 
 	# Format for Claude
@@ -101,7 +107,7 @@ def main():
 	print()
 
 	# Save results
-	with open('phase0_results.json', 'w') as f:
+	with open("phase0_results.json", "w") as f:
 		f.write(results)
 
 	print("✅ Results saved to phase0_results.json")
@@ -111,6 +117,7 @@ def main():
 	print("2. Did it miss any important tasks?")
 	print("3. Are there false positives?")
 	print("4. Is this useful enough to build the full tool?")
+
 
 if __name__ == "__main__":
 	main()

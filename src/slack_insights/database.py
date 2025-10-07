@@ -157,9 +157,7 @@ def get_conversation(conn: sqlite3.Connection, conversation_id: int) -> Optional
 	Returns:
 		dict with conversation data, or None if not found
 	"""
-	cursor = conn.execute(
-		"SELECT * FROM conversations WHERE id = ?", (conversation_id,)
-	)
+	cursor = conn.execute("SELECT * FROM conversations WHERE id = ?", (conversation_id,))
 	row = cursor.fetchone()
 
 	if row:

@@ -8,14 +8,12 @@ Provides commands:
 """
 
 import os
-import sys
 
 import typer
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from slack_insights.database import (
-	get_action_items_by_assigner,
 	init_database,
 	insert_action_item,
 	insert_conversation,
@@ -63,16 +61,13 @@ def import_conversations(file_path: str) -> None:
 
 		# Import messages with progress bar
 		imported_count = 0
-		duplicate_count = 0
 
 		with Progress(
 			SpinnerColumn(),
 			TextColumn("[progress.description]{task.description}"),
 			console=console,
 		) as progress:
-			task = progress.add_task(
-				f"Importing {len(messages)} messages...", total=len(messages)
-			)
+			task = progress.add_task(f"Importing {len(messages)} messages...", total=len(messages))
 
 			for raw_msg in messages:
 				try:
@@ -94,12 +89,12 @@ def import_conversations(file_path: str) -> None:
 		conn.close()
 
 		# Display summary
-		console.print(f"\n[green]✓[/green] Import complete!")
+		console.print("\n[green]✓[/green] Import complete!")
 		console.print(f"  Messages processed: {len(messages)}")
 		console.print(f"  Messages imported: {imported_count}")
 		console.print(f"  Database: {db_path}")
 		console.print(
-			f"\n[cyan]Next step:[/cyan] Run [bold]slack-insights analyze[/bold] "
+			"\n[cyan]Next step:[/cyan] Run [bold]slack-insights analyze[/bold] "
 			"to extract action items"
 		)
 
@@ -145,8 +140,7 @@ def analyze(
 		# Process in batches
 		total_items_extracted = 0
 		batches = [
-			all_messages[i : i + batch_size]
-			for i in range(0, len(all_messages), batch_size)
+			all_messages[i : i + batch_size] for i in range(0, len(all_messages), batch_size)
 		]
 
 		with Progress(
@@ -154,9 +148,7 @@ def analyze(
 			TextColumn("[progress.description]{task.description}"),
 			console=console,
 		) as progress:
-			task = progress.add_task(
-				f"Processing {len(batches)} batches...", total=len(batches)
-			)
+			task = progress.add_task(f"Processing {len(batches)} batches...", total=len(batches))
 
 			for batch_num, batch in enumerate(batches, 1):
 				try:
@@ -200,11 +192,11 @@ def analyze(
 					continue
 
 		# Display summary
-		console.print(f"\n[green]✓[/green] Analysis complete!")
+		console.print("\n[green]✓[/green] Analysis complete!")
 		console.print(f"  Messages analyzed: {len(all_messages)}")
 		console.print(f"  Action items extracted: {total_items_extracted}")
 		console.print(
-			f"\n[cyan]Next step:[/cyan] Run [bold]slack-insights query-person <name>[/bold] "
+			"\n[cyan]Next step:[/cyan] Run [bold]slack-insights query-person <name>[/bold] "
 			"to view action items"
 		)
 

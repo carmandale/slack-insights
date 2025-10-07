@@ -7,8 +7,7 @@ Tests typer CLI interface and command implementations.
 import json
 import os
 import tempfile
-from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 from typer.testing import CliRunner
@@ -143,9 +142,7 @@ def test_import_command_idempotent(sample_slackdump_file, temp_db, monkeypatch):
 
 
 @patch("slack_insights.cli.extract_action_items")
-def test_analyze_command_with_data(
-	mock_extract, sample_slackdump_file, temp_db, monkeypatch
-):
+def test_analyze_command_with_data(mock_extract, sample_slackdump_file, temp_db, monkeypatch):
 	"""Test analyze command with imported data."""
 	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db)
 
@@ -197,9 +194,7 @@ def test_query_person_command_basic():
 
 def test_query_person_command_with_filters():
 	"""Test query-person with --status and --recent filters."""
-	result = runner.invoke(
-		app, ["query-person", "Dan", "--status", "open", "--recent"]
-	)
+	result = runner.invoke(app, ["query-person", "Dan", "--status", "open", "--recent"])
 	# Stub implementation should succeed
 	if result.exit_code != 0:
 		assert "error" in result.stdout.lower(), "Command failed without error message"
