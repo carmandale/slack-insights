@@ -162,20 +162,24 @@ def analyze(
 					items = extract_action_items(batch, assigner_name=assigner)
 
 					# Store extracted items
+					# NOTE: Using first message in batch as conversation_id reference
+					# Future enhancement: have Claude return source_message_id per item
+					default_conversation_id = batch[0]["id"] if batch else None
+
 					for item in items:
-						# Find conversation_id from first message in context
-						# For now, use first message in batch as reference
-						conversation_id = batch[0]["id"] if batch else None
+						# Get source info from item if available, else use batch default
+						conversation_id = item.get("source_message_id", default_conversation_id)
 
 						if conversation_id:
 							action_item = {
 								"conversation_id": conversation_id,
 								"task_description": item.get("task", ""),
+								"assignee_username": item.get("assignee"),
+								"assigner_username": item.get("assigner"),
 								"mentioned_date": item.get("date"),
 								"status": item.get("status", "open"),
 								"urgency": item.get("urgency", "normal"),
 								"context_quote": item.get("context", ""),
-								"assigner_username": assigner,
 							}
 							insert_action_item(conn, action_item)
 							total_items_extracted += 1

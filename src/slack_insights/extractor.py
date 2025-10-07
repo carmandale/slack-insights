@@ -73,6 +73,8 @@ tasks, and requests{assigner_context}.
 
 For each action item, provide:
 - task: Clear description of what needs to be done
+- assigner: Name of person who requested/assigned the task (from username in conversation)
+- assignee: Name of person who should do the task (often implicit, use context)
 - date: Date mentioned in the conversation (YYYY-MM-DD format, or estimate from timestamp)
 - status: "open" or "completed" (infer from conversation context)
 - urgency: "low", "normal", or "high" (infer from language like "ASAP", "urgent", "when you can")
@@ -87,6 +89,8 @@ Example format:
 [
   {{
     "task": "Review the PR before EOD",
+    "assigner": "Dan Ferguson",
+    "assignee": "Dale Carman",
     "date": "2025-10-05",
     "status": "open",
     "urgency": "high",
