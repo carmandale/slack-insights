@@ -10,8 +10,12 @@ Provides commands:
 import os
 
 import typer
+from dotenv import load_dotenv
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
+
+# Load environment variables from .env file
+load_dotenv()
 
 from slack_insights.database import (
 	init_database,
