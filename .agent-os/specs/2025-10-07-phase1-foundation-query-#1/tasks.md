@@ -49,15 +49,15 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 4.8 Add error handling (auth, rate limit, server errors)
   - [x] 4.9 Verify all extractor tests pass
 
-- [ ] 5. CLI Import Command
-  - [ ] 5.1 Write tests for CLI import command (test_cli.py)
-  - [ ] 5.2 Create cli.py with typer app
-  - [ ] 5.3 Implement import command with file path argument
-  - [ ] 5.4 Add progress bar using rich.progress
-  - [ ] 5.5 Display summary statistics after import
-  - [ ] 5.6 Add error handling (file not found, invalid JSON)
-  - [ ] 5.7 Verify import command tests pass
-  - [ ] 5.8 Test import with dan-messages/D3Y7V95DX.json (9,960 messages)
+- [x] 5. CLI Import Command
+  - [x] 5.1 Write tests for CLI import command (test_cli.py)
+  - [x] 5.2 Create cli.py with typer app
+  - [x] 5.3 Implement import command with file path argument
+  - [x] 5.4 Add progress bar using rich.progress
+  - [x] 5.5 Display summary statistics after import
+  - [x] 5.6 Add error handling (file not found, invalid JSON)
+  - [x] 5.7 Verify import command tests pass
+  - [x] 5.8 Test import with dan-messages/D3Y7V95DX.json (9,960 messages)
 
 - [ ] 6. CLI Analyze Command
   - [ ] 6.1 Write tests for analyze command (test_cli.py)

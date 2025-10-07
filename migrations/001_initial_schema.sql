@@ -52,5 +52,5 @@ CREATE INDEX IF NOT EXISTS idx_action_items_assigner ON action_items(assigner_us
 CREATE INDEX IF NOT EXISTS idx_action_items_status ON action_items(status);
 CREATE INDEX IF NOT EXISTS idx_action_items_mentioned_date ON action_items(mentioned_date);
 
--- Record migration
-INSERT INTO schema_versions (version) VALUES (1);
+-- Record migration (only if not already applied)
+INSERT OR IGNORE INTO schema_versions (version) VALUES (1);
