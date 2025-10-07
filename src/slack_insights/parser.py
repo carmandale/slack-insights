@@ -41,6 +41,10 @@ def parse_slackdump(file_path: str) -> dict:
 	except Exception as e:
 		raise ParserError(f"Error reading {file_path}: {e}")
 
+	# Type cast to satisfy mypy - we know this is a dict from JSON
+	if not isinstance(data, dict):
+		raise ParserError(f"Expected dict in JSON file, got {type(data)}")
+
 	return data
 
 
@@ -83,7 +87,7 @@ def parse_message(
 	# Extract timestamp (convert string to float)
 	try:
 		timestamp = float(raw_message["ts"])
-	except (ValueError, TypeError) as e:
+	except (ValueError, TypeError):
 		raise ParserError(f"Invalid timestamp format: {raw_message.get('ts')}")
 
 	# Extract thread timestamp if present

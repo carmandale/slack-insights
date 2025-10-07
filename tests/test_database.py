@@ -7,16 +7,15 @@ Tests database initialization, schema creation, and CRUD operations.
 import os
 import sqlite3
 import tempfile
-from datetime import datetime
 
 import pytest
 
 from slack_insights.database import (
-	init_database,
-	insert_conversation,
-	insert_action_item,
-	get_conversation,
 	get_action_items_by_assigner,
+	get_conversation,
+	init_database,
+	insert_action_item,
+	insert_conversation,
 )
 
 

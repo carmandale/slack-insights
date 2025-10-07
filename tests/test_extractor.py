@@ -5,17 +5,16 @@ Tests extraction logic with mocked Anthropic API calls.
 """
 
 import json
-import os
 from unittest.mock import Mock, patch
 
 import pytest
 
 from slack_insights.extractor import (
-	format_messages_for_claude,
-	build_extraction_prompt,
-	parse_extraction_response,
-	extract_action_items,
 	ExtractorError,
+	build_extraction_prompt,
+	extract_action_items,
+	format_messages_for_claude,
+	parse_extraction_response,
 )
 
 
@@ -208,7 +207,9 @@ def test_extract_action_items_success(mock_anthropic_class, sample_messages, moc
 
 
 @patch("anthropic.Anthropic")
-def test_extract_action_items_with_metadata(mock_anthropic_class, sample_messages, mock_claude_response):
+def test_extract_action_items_with_metadata(
+	mock_anthropic_class, sample_messages, mock_claude_response
+):
 	"""Test extraction preserves metadata."""
 	mock_client = Mock()
 	mock_client.messages.create.return_value = mock_claude_response
@@ -248,7 +249,9 @@ def test_extract_action_items_authentication_error(mock_anthropic_class, sample_
 
 
 @patch("anthropic.Anthropic")
-def test_extract_action_items_rate_limit_retry(mock_anthropic_class, sample_messages, mock_claude_response):
+def test_extract_action_items_rate_limit_retry(
+	mock_anthropic_class, sample_messages, mock_claude_response
+):
 	"""Test retry logic on rate limit error."""
 	import anthropic
 
@@ -293,7 +296,9 @@ def test_extract_action_items_max_retries_exceeded(mock_anthropic_class, sample_
 
 
 @patch("anthropic.Anthropic")
-def test_extract_action_items_server_error_retry(mock_anthropic_class, sample_messages, mock_claude_response):
+def test_extract_action_items_server_error_retry(
+	mock_anthropic_class, sample_messages, mock_claude_response
+):
 	"""Test retry logic on server error."""
 	import anthropic
 

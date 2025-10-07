@@ -4,7 +4,6 @@ Database operations for Slack Insights.
 Handles SQLite database initialization, migrations, and CRUD operations.
 """
 
-import os
 import sqlite3
 from pathlib import Path
 from typing import Optional
@@ -70,13 +69,14 @@ def insert_conversation(conn: sqlite3.Connection, message: dict) -> int:
 	existing = cursor.fetchone()
 
 	if existing:
-		return existing[0]
+		return int(existing[0])
 
 	# Insert new conversation
 	cursor = conn.execute(
 		"""
 		INSERT INTO conversations
-			(channel_id, channel_name, user_id, username, timestamp, message_text, thread_ts, message_type, raw_json)
+			(channel_id, channel_name, user_id, username, timestamp,
+			message_text, thread_ts, message_type, raw_json)
 		VALUES
 			(?, ?, ?, ?, ?, ?, ?, ?, ?)
 		""",
@@ -93,7 +93,7 @@ def insert_conversation(conn: sqlite3.Connection, message: dict) -> int:
 		),
 	)
 	conn.commit()
-	return cursor.lastrowid
+	return int(cursor.lastrowid or 0)
 
 
 def insert_action_item(conn: sqlite3.Connection, item: dict) -> int:
@@ -123,8 +123,9 @@ def insert_action_item(conn: sqlite3.Connection, item: dict) -> int:
 	cursor = conn.execute(
 		"""
 		INSERT INTO action_items
-			(conversation_id, task_description, assignee_user_id, assignee_username,
-			 assigner_user_id, assigner_username, mentioned_date, status, urgency, context_quote)
+			(conversation_id, task_description, assignee_user_id,
+			assignee_username, assigner_user_id, assigner_username,
+			mentioned_date, status, urgency, context_quote)
 		VALUES
 			(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		""",
@@ -142,7 +143,7 @@ def insert_action_item(conn: sqlite3.Connection, item: dict) -> int:
 		),
 	)
 	conn.commit()
-	return cursor.lastrowid
+	return int(cursor.lastrowid or 0)
 
 
 def get_conversation(conn: sqlite3.Connection, conversation_id: int) -> Optional[dict]:

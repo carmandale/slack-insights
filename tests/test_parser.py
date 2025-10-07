@@ -7,14 +7,13 @@ Tests parsing of SlackDump export format and message extraction.
 import json
 import os
 import tempfile
-from pathlib import Path
 
 import pytest
 
 from slack_insights.parser import (
-	parse_slackdump,
-	parse_message,
 	ParserError,
+	parse_message,
+	parse_slackdump,
 )
 
 

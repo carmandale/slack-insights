@@ -67,7 +67,8 @@ def build_extraction_prompt(
 
 	assigner_context = f" from {assigner_name}" if assigner_name else ""
 
-	prompt = f"""Analyze this Slack conversation and extract all action items, tasks, and requests{assigner_context}.
+	prompt = f"""Analyze this Slack conversation and extract all action items, \
+tasks, and requests{assigner_context}.
 
 For each action item, provide:
 - task: Clear description of what needs to be done
@@ -163,7 +164,8 @@ def extract_action_items(
 	api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
 	if not api_key:
 		raise ExtractorError(
-			"API key required. Set ANTHROPIC_API_KEY environment variable or pass api_key parameter."
+			"API key required. Set ANTHROPIC_API_KEY environment variable "
+			"or pass api_key parameter."
 		)
 
 	# Build prompt
@@ -182,7 +184,11 @@ def extract_action_items(
 			)
 
 			# Extract text from response
-			response_text = response.content[0].text
+			first_block = response.content[0]
+			if hasattr(first_block, "text"):
+				response_text = first_block.text
+			else:
+				return []
 
 			# Parse and return action items
 			items = parse_extraction_response(response_text)
