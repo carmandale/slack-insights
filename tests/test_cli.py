@@ -142,12 +142,46 @@ def test_import_command_idempotent(sample_slackdump_file, temp_db, monkeypatch):
 	assert count == 2, f"Expected 2 messages, found {count} (duplicates created!)"
 
 
-def test_analyze_command_no_database():
-	"""Test analyze command when database doesn't exist."""
+@patch("slack_insights.cli.extract_action_items")
+def test_analyze_command_with_data(
+	mock_extract, sample_slackdump_file, temp_db, monkeypatch
+):
+	"""Test analyze command with imported data."""
+	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db)
+
+	# Import test data first
+	runner.invoke(app, ["import", sample_slackdump_file])
+
+	# Mock Claude API response
+	mock_extract.return_value = [
+		{
+			"task": "Review the PR",
+			"date": "2017-01-31",
+			"status": "open",
+			"urgency": "high",
+			"context": "Can you review the PR?",
+		}
+	]
+
+	# Run analyze
 	result = runner.invoke(app, ["analyze"])
-	# Stub implementation just echoes message
+
 	assert result.exit_code == 0
-	assert "analyz" in result.stdout.lower()
+	assert "analyz" in result.stdout.lower() or "extract" in result.stdout.lower()
+
+
+def test_analyze_command_no_database(temp_db, monkeypatch):
+	"""Test analyze command when database has no data."""
+	monkeypatch.setenv("SLACK_INSIGHTS_DB", temp_db)
+
+	# Initialize empty database
+	from slack_insights.database import init_database
+
+	init_database(temp_db).close()
+
+	result = runner.invoke(app, ["analyze"])
+	# Should handle gracefully (no messages to analyze)
+	assert result.exit_code == 0
 
 
 def test_query_person_command_basic():

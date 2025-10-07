@@ -59,15 +59,15 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 5.7 Verify import command tests pass
   - [x] 5.8 Test import with dan-messages/D3Y7V95DX.json (9,960 messages)
 
-- [ ] 6. CLI Analyze Command
-  - [ ] 6.1 Write tests for analyze command (test_cli.py)
-  - [ ] 6.2 Implement analyze command in cli.py
-  - [ ] 6.3 Add batch processing logic (100 messages per batch)
-  - [ ] 6.4 Display progress bar for analysis
-  - [ ] 6.5 Store extracted action items in database
-  - [ ] 6.6 Display summary (total items, open vs completed)
-  - [ ] 6.7 Verify analyze command tests pass
-  - [ ] 6.8 Test analyze with real Dan data
+- [x] 6. CLI Analyze Command
+  - [x] 6.1 Write tests for analyze command (test_cli.py)
+  - [x] 6.2 Implement analyze command in cli.py
+  - [x] 6.3 Add batch processing logic (100 messages per batch)
+  - [x] 6.4 Display progress bar for analysis
+  - [x] 6.5 Store extracted action items in database
+  - [x] 6.6 Display summary (total items, open vs completed)
+  - [x] 6.7 Verify analyze command tests pass
+  - [x] 6.8 Test analyze with real Dan data
 
 - [ ] 7. Query Engine & CLI Query Command
   - [ ] 7.1 Write tests for query engine (test_query_engine.py)
