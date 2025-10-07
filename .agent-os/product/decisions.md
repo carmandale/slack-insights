@@ -92,32 +92,38 @@ Two options for accessing Slack data: export via SlackDump (one-time JSON export
 ## 2025-10-07: CLI Framework Selection
 
 **ID:** DEC-003
-**Status:** Pending
+**Status:** Accepted
 **Category:** Technical
 **Stakeholders:** Tech Lead
+**Related Spec:** @.agent-os/specs/2025-10-07-phase1-foundation-query-#1/
 
 ### Decision
 
-Choose between `typer` and `click` for CLI framework during Phase 1 implementation.
+Use **typer** as the CLI framework for Slack Insights commands.
 
 ### Context
 
-Need a robust CLI framework for building commands (import, analyze, query, summary). Both typer and click are popular choices with different philosophies.
+Need a robust CLI framework for building commands (import, analyze, query-person). Both typer and click are popular choices with different philosophies. This decision was finalized during Phase 1 specification after evaluating requirements.
 
-### Options
+### Rationale
 
-1. **typer**: Modern, type-hint based, automatic help generation, built on click
-2. **click**: Mature, decorator-based, more explicit, widely adopted
+1. **Type Hint Integration**: Modern Python type hints enable better IDE support and mypy validation
+2. **Automatic Help Generation**: Typer generates comprehensive help text from function signatures and docstrings
+3. **Better Developer Experience**: More Pythonic API compared to click's decorator-heavy approach
+4. **Rich Integration**: Works seamlessly with rich library for progress bars and formatted output
+5. **Built on Click**: Inherits click's maturity and reliability while providing modern interface
 
-### Rationale (Pending)
+### Alternative Considered
 
-Will make final decision during Phase 1 setup based on:
-- Type hint integration with mypy
-- Quality of auto-generated help text
-- Ease of implementing progress bars with rich
-- Community momentum and documentation
+- **click**: Mature, decorator-based framework with wide adoption
+- **Rejected because**: More verbose syntax, less type-safe, requires manual help text construction. Typer provides all of click's benefits with improved ergonomics for modern Python development.
 
-**Action Required:** Evaluate both during Phase 1, document final choice here
+### Implementation Notes
+
+- Entry point: `slack-insights` command via pyproject.toml scripts
+- Commands structure: `slack-insights [command] [options]`
+- Global flags: `--verbose`, `--help`
+- Progress bars via rich.progress integration
 
 ---
 
