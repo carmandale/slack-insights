@@ -69,16 +69,16 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/20
   - [x] 6.7 Verify analyze command tests pass
   - [x] 6.8 Test analyze with real Dan data
 
-- [ ] 7. Query Engine & CLI Query Command
-  - [ ] 7.1 Write tests for query engine (test_query_engine.py)
-  - [ ] 7.2 Create query_engine.py module
-  - [ ] 7.3 Implement query_by_person() with filters
-  - [ ] 7.4 Add --status filter (open/completed)
-  - [ ] 7.5 Add --recent filter (last 7 days)
-  - [ ] 7.6 Implement format_results_as_table() using rich
-  - [ ] 7.7 Implement query-person CLI command
-  - [ ] 7.8 Verify all query tests pass
-  - [ ] 7.9 Test query-person Dan with various filters
+- [x] 7. Query Engine & CLI Query Command
+  - [x] 7.1 Write tests for query engine (test_query_engine.py)
+  - [x] 7.2 Create query_engine.py module
+  - [x] 7.3 Implement query_by_person() with filters
+  - [x] 7.4 Add --status filter (open/completed)
+  - [x] 7.5 Add --recent filter (last 7 days)
+  - [x] 7.6 Implement format_results_as_table() using rich
+  - [x] 7.7 Implement query-person CLI command
+  - [x] 7.8 Verify all query tests pass
+  - [x] 7.9 Test query-person Dan with various filters
 
 - [ ] 8. Integration & End-to-End Testing
   - [ ] 8.1 Write integration tests (test_integration.py)

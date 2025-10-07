@@ -22,6 +22,7 @@ from slack_insights.database import (
 )
 from slack_insights.extractor import ExtractorError, extract_action_items
 from slack_insights.parser import ParserError, parse_message, parse_slackdump
+from slack_insights.query_engine import format_results_as_table, query_by_person
 
 app = typer.Typer(
 	name="slack-insights",
@@ -214,8 +215,33 @@ def query_person(
 	status: str = typer.Option(None, "--status", help="Filter by status (open/completed)"),
 ) -> None:
 	"""Query action items by person name."""
-	typer.echo(f"Querying action items from: {name}")
-	# TODO: Implement in Task 7
+	try:
+		db_path = get_db_path()
+
+		if not os.path.exists(db_path):
+			console.print("[red]Error:[/red] Database not found.")
+			console.print("Run [bold]slack-insights import <file>[/bold] first.")
+			raise typer.Exit(code=1)
+
+		# Connect to database
+		conn = init_database(db_path)
+
+		# Query action items
+		results = query_by_person(conn, name, status=status, recent=recent)
+
+		conn.close()
+
+		# Format and display results
+		table = format_results_as_table(results)
+		console.print(f"\n[cyan]Action items from:[/cyan] {name}\n")
+		console.print(table)
+
+		if results:
+			console.print(f"\n[dim]Total: {len(results)} items[/dim]")
+
+	except Exception as e:
+		console.print(f"[red]Error:[/red] {e}")
+		raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":
