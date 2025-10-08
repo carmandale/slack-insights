@@ -8,8 +8,12 @@ Slack Insights transforms overwhelming Slack conversation history into actionabl
 
 ## Features
 
-- **Import** Slack conversations from SlackDump exports
-- **Extract** action items automatically using Claude AI
+- **Import** Slack conversations from SlackDump exports with username resolution
+- **Extract** action items automatically using Claude AI with:
+  - Thread context preservation for conversational flow
+  - Compact transcript format (60% token savings)
+  - Recognition of casual/conversational requests
+  - Sliding window batching with overlap
 - **Query** tasks by person, date, or status
 - **Privacy-first** - all data stored locally in SQLite
 
@@ -65,8 +69,14 @@ slack-insights query-person Dan --status open --recent
 ### Advanced Options
 
 ```bash
-# Analyze with custom batch size (default: 100 messages per batch)
-slack-insights analyze --batch-size 50
+# Analyze with improved batching (default: 120 messages, 30 overlap, newest-first)
+slack-insights analyze --newest-first
+
+# Customize batch settings
+slack-insights analyze --batch-size 100 --overlap 20
+
+# Process oldest messages first (legacy behavior)
+slack-insights analyze --oldest-first
 
 # Filter analysis by assigner name
 slack-insights analyze --assigner "Dan Ferguson"
@@ -136,14 +146,20 @@ cat .env | grep ANTHROPIC_API_KEY
 
 ## Project Status
 
-**Phase:** Phase 1 - Foundation & Basic Query
-**Status:** Complete (66 tests passing, 95% coverage)
-**GitHub Issue:** #1
+**Phase 1:** Foundation & Basic Query ✅ Complete (66 tests passing, 95% coverage)  
+**Phase 2:** Extraction Quality Fixes ✅ Complete (21/21 tests passing)
+
+**Recent Improvements (Issue #2):**
+- Username resolution with 100% coverage
+- Thread context handling for conversational flow
+- Compact transcript format (60% token savings)
+- Improved prompt for casual language recognition
+- Sliding window batching with overlap
+- **Result:** 24 action items from last 7 days (previously 0)
 
 ## What's Next
 
 See [roadmap.md](.agent-os/product/roadmap.md) for upcoming features:
-- Phase 2: Enhanced extraction with better categorization
 - Phase 3: Natural language queries ("what did Dan ask me to do this week?")
 - Phase 4: Summaries and reporting
 - Phase 5: Performance optimization and polish
