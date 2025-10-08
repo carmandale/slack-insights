@@ -5,8 +5,11 @@ Parses SlackDump export format and extracts message data for database storage.
 """
 
 import json
+import os
 from pathlib import Path
 from typing import Optional
+
+from slack_insights.user_lookup import load_user_map, resolve_user_id
 
 
 class ParserError(Exception):
@@ -52,7 +55,7 @@ def parse_message(
 	raw_message: dict,
 	channel_id: str,
 	channel_name: Optional[str] = None,
-	users_json_path: Optional[str] = None,
+	user_map: Optional[dict[str, str]] = None,
 ) -> dict:
 	"""
 	Parse a single Slack message into database-ready format.
@@ -61,14 +64,15 @@ def parse_message(
 		raw_message: Raw message dict from SlackDump JSON
 		channel_id: Channel/DM ID this message belongs to
 		channel_name: Optional human-readable channel name
-		users_json_path: Optional path to users.json for username lookup (not implemented yet)
+		user_map: Optional user ID to display name mapping
 
 	Returns:
 		dict with keys:
 			- channel_id
 			- channel_name
 			- user_id
-			- username (extracted from user_id if users_json provided)
+			- username (deprecated, always None)
+			- display_name (resolved from user_map)
 			- timestamp (as float)
 			- message_text
 			- thread_ts (as float or None)
@@ -111,13 +115,12 @@ def parse_message(
 	# Determine message type
 	message_type = raw_message.get("type", "message")
 
-	# Username lookup (not yet implemented)
+	# Resolve user ID to display name
+	user_id = raw_message["user"]
+	display_name = resolve_user_id(user_id, user_map) if user_map else None
+
+	# Keep username as None (deprecated field)
 	username = None
-	if users_json_path:
-		raise NotImplementedError(
-			"Username lookup from users.json is not yet implemented. "
-			"This feature is planned for a future release."
-		)
 
 	# Preserve raw JSON for potential reprocessing
 	raw_json = json.dumps(raw_message)
@@ -125,8 +128,9 @@ def parse_message(
 	return {
 		"channel_id": channel_id,
 		"channel_name": channel_name,
-		"user_id": raw_message["user"],
+		"user_id": user_id,
 		"username": username,
+		"display_name": display_name,
 		"timestamp": timestamp,
 		"message_text": message_text,
 		"thread_ts": thread_ts,

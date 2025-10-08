@@ -11,7 +11,7 @@ from typing import Optional
 
 def init_database(db_path: str = "slack_insights.db") -> sqlite3.Connection:
 	"""
-	Initialize SQLite database with schema.
+	Initialize SQLite database with schema and run all migrations.
 
 	Args:
 		db_path: Path to database file
@@ -26,11 +26,32 @@ def init_database(db_path: str = "slack_insights.db") -> sqlite3.Connection:
 	# Enable foreign key constraints
 	conn.execute("PRAGMA foreign_keys = ON")
 
-	# Run migration script
-	migration_path = Path(__file__).parent.parent.parent / "migrations" / "001_initial_schema.sql"
+	# Get migrations directory
+	migrations_dir = Path(__file__).parent.parent.parent / "migrations"
 
-	if migration_path.exists():
-		with open(migration_path, "r") as f:
+	if not migrations_dir.exists():
+		return conn
+
+	# Get all migration files sorted by name
+	migration_files = sorted(migrations_dir.glob("*.sql"))
+
+	# Run each migration
+	for migration_file in migration_files:
+		# Extract version number from filename (e.g., "001_initial_schema.sql" -> 1)
+		version = int(migration_file.stem.split("_")[0])
+		
+		# Check if schema_versions table exists first
+		cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_versions'")
+		table_exists = cursor.fetchone() is not None
+		
+		# Check if this migration was already applied (only if table exists)
+		if table_exists:
+			cursor = conn.execute("SELECT version FROM schema_versions WHERE version = ?", (version,))
+			if cursor.fetchone():
+				continue  # Skip already applied migrations
+
+		# Run migration
+		with open(migration_file, "r") as f:
 			migration_sql = f.read()
 			conn.executescript(migration_sql)
 			conn.commit()
@@ -51,7 +72,8 @@ def insert_conversation(conn: sqlite3.Connection, message: dict) -> int:
 			- channel_id (required)
 			- channel_name (optional)
 			- user_id (required)
-			- username (optional)
+			- username (optional, deprecated)
+			- display_name (optional)
 			- timestamp (required)
 			- message_text (required)
 			- thread_ts (optional)
@@ -75,16 +97,17 @@ def insert_conversation(conn: sqlite3.Connection, message: dict) -> int:
 	cursor = conn.execute(
 		"""
 		INSERT INTO conversations
-			(channel_id, channel_name, user_id, username, timestamp,
+			(channel_id, channel_name, user_id, username, display_name, timestamp,
 			message_text, thread_ts, message_type, raw_json)
 		VALUES
-			(?, ?, ?, ?, ?, ?, ?, ?, ?)
+			(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		""",
 		(
 			message.get("channel_id"),
 			message.get("channel_name"),
 			message.get("user_id"),
 			message.get("username"),
+			message.get("display_name"),
 			message.get("timestamp"),
 			message.get("message_text"),
 			message.get("thread_ts"),

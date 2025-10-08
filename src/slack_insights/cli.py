@@ -25,6 +25,7 @@ from slack_insights.database import (
 from slack_insights.extractor import ExtractorError, extract_action_items
 from slack_insights.parser import ParserError, parse_message, parse_slackdump
 from slack_insights.query_engine import format_results_as_table, query_by_person
+from slack_insights.user_lookup import load_user_map
 
 app = typer.Typer(
 	name="slack-insights",
@@ -59,6 +60,20 @@ def import_conversations(file_path: str) -> None:
 			console.print("[yellow]Warning:[/yellow] No messages found in file")
 			return
 
+		# Load user map for display name resolution
+		user_map = None
+		users_file = os.getenv("SLACK_USERS_FILE", "users-T1YNKSBL5.txt")
+		try:
+			if os.path.exists(users_file):
+				user_map = load_user_map(users_file)
+				console.print(f"[dim]Loaded {len(user_map)} users from {users_file}[/dim]")
+			else:
+				console.print(f"[yellow]Note:[/yellow] User mapping file not found: {users_file}")
+				console.print("[dim]User IDs will not be resolved to display names[/dim]")
+		except Exception as e:
+			console.print(f"[yellow]Warning:[/yellow] Failed to load user map: {e}")
+			console.print("[dim]Continuing with user IDs only[/dim]")
+
 		# Initialize database
 		db_path = get_db_path()
 		conn = init_database(db_path)
@@ -75,7 +90,7 @@ def import_conversations(file_path: str) -> None:
 
 			for raw_msg in messages:
 				try:
-					parsed_msg = parse_message(raw_msg, channel_id, channel_name)
+					parsed_msg = parse_message(raw_msg, channel_id, channel_name, user_map)
 					conversation_id = insert_conversation(conn, parsed_msg)
 
 					# Check if it was a duplicate (would have same ID as previous)
@@ -109,10 +124,18 @@ def import_conversations(file_path: str) -> None:
 
 @app.command()
 def analyze(
-	batch_size: int = typer.Option(100, "--batch-size", help="Messages per batch"),
+	batch_size: int = typer.Option(120, "--batch-size", help="Messages per batch"),
 	assigner: str = typer.Option(None, "--assigner", help="Filter by assigner name"),
+	overlap: int = typer.Option(30, "--overlap", help="Messages to overlap between batches"),
+	newest_first: bool = typer.Option(True, "--newest-first/--oldest-first", help="Process newest messages first"),
 ) -> None:
-	"""Analyze imported conversations and extract action items using Claude API."""
+	"""Analyze imported conversations and extract action items using Claude API.
+	
+	Improved batching:
+	- Default 120 messages per batch (was 100)
+	- 30-message overlap preserves conversation flow
+	- Newest-first ordering prioritizes recent messages
+	"""
 	conn = None
 	try:
 		db_path = get_db_path()
@@ -124,10 +147,11 @@ def analyze(
 		# Connect to database
 		conn = init_database(db_path)
 
-		# Get all conversations
+		# Get all conversations with display names
+		order_by = "DESC" if newest_first else "ASC"
 		cursor = conn.execute(
-			"SELECT id, user_id, username, message_text, timestamp FROM conversations "
-			"ORDER BY timestamp ASC"
+			f"SELECT id, user_id, username, display_name, message_text, timestamp, thread_ts "
+			f"FROM conversations ORDER BY timestamp {order_by}"
 		)
 		all_messages = [dict(row) for row in cursor.fetchall()]
 
@@ -138,14 +162,26 @@ def analyze(
 			return
 
 		console.print(
-			f"[cyan]Analyzing {len(all_messages)} messages in batches of {batch_size}...[/cyan]"
+			f"[cyan]Analyzing {len(all_messages)} messages...[/cyan]"
 		)
+		console.print(f"[dim]  Batch size: {batch_size}, Overlap: {overlap}, Order: {'newest-first' if newest_first else 'oldest-first'}[/dim]")
 
-		# Process in batches
+		# Process in batches with sliding window
 		total_items_extracted = 0
-		batches = [
-			all_messages[i : i + batch_size] for i in range(0, len(all_messages), batch_size)
-		]
+		
+		# Create batches with overlap
+		batches = []
+		if overlap >= batch_size:
+			console.print(f"[yellow]Warning:[/yellow] Overlap ({overlap}) >= batch size ({batch_size}). Setting overlap to {batch_size - 1}.")
+			overlap = batch_size - 1
+		
+		for i in range(0, len(all_messages), batch_size - overlap):
+			batch = all_messages[i : i + batch_size]
+			if batch:  # Only add non-empty batches
+				batches.append(batch)
+				# Stop if we've covered all messages
+				if i + batch_size >= len(all_messages):
+					break
 
 		with Progress(
 			SpinnerColumn(),
@@ -156,8 +192,8 @@ def analyze(
 
 			for batch_num, batch in enumerate(batches, 1):
 				try:
-					# Extract action items from batch
-					items = extract_action_items(batch, assigner_name=assigner)
+					# Extract action items from batch with thread context
+					items = extract_action_items(batch, assigner_name=assigner, conn=conn)
 
 					# Store extracted items
 					# NOTE: Using first message in batch as conversation_id reference

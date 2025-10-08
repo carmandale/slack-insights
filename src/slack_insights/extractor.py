@@ -6,11 +6,14 @@ Extracts tasks, requests, and commitments from Slack conversations.
 
 import json
 import os
+import sqlite3
 import time
 from datetime import datetime
 from typing import Optional
 
 import anthropic
+
+from slack_insights.thread_context import format_thread_context, get_thread_parents
 
 
 class ExtractorError(Exception):
@@ -19,80 +22,135 @@ class ExtractorError(Exception):
 	pass
 
 
-def format_messages_for_claude(messages: list[dict]) -> str:
+def format_messages_for_claude(
+	messages: list[dict],
+	conn: Optional[sqlite3.Connection] = None,
+) -> str:
 	"""
-	Format messages into readable conversation text for Claude.
+	Format messages into compact transcript format for Claude.
+
+	New format saves ~60% tokens:
+	- Before: [{"user_id": "U123", "timestamp": 1728133380, "text": "..."}, ...]
+	- After: 2025-10-05 14:23 — Dan Ferguson: Message text
 
 	Args:
-		messages: List of parsed message dicts with user_id, username, timestamp, message_text
+		messages: List of parsed message dicts
+		conn: Optional database connection for fetching thread parents
 
 	Returns:
-		Formatted conversation string
+		Compact transcript string
 	"""
 	if not messages:
 		return ""
 
 	lines = []
 	for msg in messages:
-		username = msg.get("username") or msg.get("user_id", "Unknown")
+		# Use display_name if available, fallback to username or user_id
+		name = msg.get("display_name") or msg.get("username") or msg.get("user_id", "Unknown")
 		timestamp = msg.get("timestamp", 0)
 		text = msg.get("message_text", "")
 
-		# Format timestamp as readable date
+		# Format timestamp as compact date
 		try:
 			ts = float(timestamp)
 			dt = datetime.fromtimestamp(ts)
 			date_str = dt.strftime("%Y-%m-%d %H:%M")
 		except (ValueError, OSError, TypeError):
-			date_str = "Unknown date"
+			date_str = "????-??-?? ??:??"
 
-		lines.append(f"[{date_str}] {username}: {text}")
+		# Compact format: YYYY-MM-DD HH:MM — Name: Message
+		lines.append(f"{date_str} — {name}: {text}")
+
+		# Add thread context if available
+		if conn:
+			parents = get_thread_parents(conn, msg, max_parents=3)
+			if parents:
+				# Insert parent context above current message
+				parent_lines = format_thread_context(parents)
+				# Insert before current line
+				for parent_line in reversed(parent_lines):
+					lines.insert(-1, parent_line)
 
 	return "\n".join(lines)
 
 
-def build_extraction_prompt(messages: list[dict], assigner_name: Optional[str] = None) -> str:
+def build_extraction_prompt(
+	messages: list[dict],
+	assigner_name: Optional[str] = None,
+	conn: Optional[sqlite3.Connection] = None,
+) -> str:
 	"""
-	Build complete prompt for Claude API.
+	Build complete prompt for Claude API with conversational examples.
 
 	Args:
 		messages: List of parsed message dicts
 		assigner_name: Optional name of person assigning tasks (e.g., "Dan")
+		conn: Optional database connection for thread context
 
 	Returns:
 		Complete prompt string
 	"""
-	conversation = format_messages_for_claude(messages)
+	conversation = format_messages_for_claude(messages, conn)
 
 	assigner_context = f" from {assigner_name}" if assigner_name else ""
 
 	prompt = f"""Analyze this Slack conversation and extract all action items, \
 tasks, and requests{assigner_context}.
 
+**IMPORTANT: Recognize both formal AND casual language patterns:**
+
+Formal examples:
+- "Please review the PR"
+- "Can you send me the report?"
+- "I need the screenshots by EOD"
+
+Casual/conversational examples:
+- "Did you get a chance to look at this?"
+- "Did you make any progress on this stuff today?"
+- "you were going to send me screenshots"
+- "Let me know what you have"
+- "Can you give me an update?"
+
+Implicit requests (look for commitments):
+- "I'll get you the screenshots" → Future action item
+- "you said you'd send the video" → Past commitment
+
 For each action item, provide:
 - task: Clear description of what needs to be done
-- assigner: Name of person who requested/assigned the task (from username in conversation)
-- assignee: Name of person who should do the task (often implicit, use context)
-- date: Date mentioned in the conversation (YYYY-MM-DD format, or estimate from timestamp)
-- status: "open" or "completed" (infer from conversation context)
-- urgency: "low", "normal", or "high" (infer from language like "ASAP", "urgent", "when you can")
-- context: Brief relevant quote from the conversation (1-2 sentences max)
+- assigner: Name of person who requested/assigned the task
+- assignee: Name of person who should do the task (often implicit)
+- date: Date from conversation (YYYY-MM-DD) or estimate from timestamp
+- status: "open" or "completed" (infer from context)
+- urgency: "low", "normal", or "high" (ASAP/urgent = high)
+- context: Brief quote from conversation (1-2 sentences max)
+- confidence: 0.0-1.0 (how confident you are this is a real action item)
 
 Conversation:
 {conversation}
 
-Return results as a JSON array. If no action items are found, return an empty array [].
+Return results as a JSON array. If no action items found, return [].
 
-Example format:
+Example output:
 [
   {{
-    "task": "Review the PR before EOD",
+    "task": "Follow up on progress",
     "assigner": "Dan Ferguson",
     "assignee": "Dale Carman",
     "date": "2025-10-05",
     "status": "open",
-    "urgency": "high",
-    "context": "Can you review the PR by EOD?"
+    "urgency": "normal",
+    "context": "Did you make any progress on this stuff today? Let me know what you have.",
+    "confidence": 0.9
+  }},
+  {{
+    "task": "Provide iPad app screenshots",
+    "assigner": "Dan Ferguson",
+    "assignee": "Dale Carman",
+    "date": "2025-10-05",
+    "status": "open",
+    "urgency": "normal",
+    "context": "Can you give me some screenshots of the iPad App?",
+    "confidence": 0.95
   }}
 ]
 """
@@ -143,6 +201,7 @@ def extract_action_items(
 	channel_id: Optional[str] = None,
 	assigner_name: Optional[str] = None,
 	max_retries: int = 3,
+	conn: Optional[sqlite3.Connection] = None,
 ) -> list[dict]:
 	"""
 	Extract action items from messages using Claude API.
@@ -171,8 +230,8 @@ def extract_action_items(
 			"or pass api_key parameter."
 		)
 
-	# Build prompt
-	prompt = build_extraction_prompt(messages, assigner_name)
+	# Build prompt with thread context
+	prompt = build_extraction_prompt(messages, assigner_name, conn)
 
 	# Initialize Anthropic client
 	client = anthropic.Anthropic(api_key=api_key)
