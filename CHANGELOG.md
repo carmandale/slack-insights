@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Natural Language Query POC** (Phase 3)
+  - Terminal chat interface (`poc_chat_terminal.py`)
+  - Converts natural language to SQL using Claude
+  - Smart grouping/deduplication module (`deduplication.py`)
+  - Interactive expansion of grouped tasks
+  - Example queries: "What did Dan ask me to do for Orchestrator?"
+  - AI-powered grouping variant (`poc_chat_terminal_grouped.py`)
+  - Gradio web UI variant (`poc_chat_ui.py`)
+  - Documentation: POC_NATURAL_LANGUAGE.md, GROUPING_ENHANCEMENT.md, EXPANSION_DEMO.md
+
+### Changed
+- Improved result display with tree-based formatting
+- Added frequency indicators for duplicate tasks (e.g., "⚠ Mentioned 4 times")
+- Numbered groups for easy reference and expansion
+
 ## [0.2.0] - 2025-10-08
 
 ### Added

@@ -147,7 +147,8 @@ cat .env | grep ANTHROPIC_API_KEY
 ## Project Status
 
 **Phase 1:** Foundation & Basic Query ✅ Complete (66 tests passing, 95% coverage)  
-**Phase 2:** Extraction Quality Fixes ✅ Complete (21/21 tests passing)
+**Phase 2:** Extraction Quality Fixes ✅ Complete (21/21 tests passing)  
+**Phase 3:** Natural Language Query POC ✅ Complete
 
 **Recent Improvements (Issue #2):**
 - Username resolution with 100% coverage
@@ -157,9 +158,25 @@ cat .env | grep ANTHROPIC_API_KEY
 - Sliding window batching with overlap
 - **Result:** 24 action items from last 7 days (previously 0)
 
+**Natural Language Query POC (Phase 3):**
+- Terminal chat interface for natural language queries
+- Smart grouping/deduplication of similar tasks
+- Interactive expansion to see all instances
+- Example queries:
+  - "What did Dan ask me to do for Orchestrator?"
+  - "Show me urgent tasks from last week"
+  - "What AT&T tasks are still open?"
+
+**Try the POC:**
+```bash
+python poc_chat_terminal.py
+```
+
+See [POC_NATURAL_LANGUAGE.md](POC_NATURAL_LANGUAGE.md) for complete guide.
+
 ## What's Next
 
 See [roadmap.md](.agent-os/product/roadmap.md) for upcoming features:
-- Phase 3: Natural language queries ("what did Dan ask me to do this week?")
+- Phase 3: Productionize natural language query as CLI command
 - Phase 4: Summaries and reporting
 - Phase 5: Performance optimization and polish

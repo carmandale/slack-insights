@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Test script to reconstruct what batch #100 prompt looked like.
 DO NOT RUN - just for analysis.
