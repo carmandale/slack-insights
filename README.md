@@ -209,11 +209,13 @@ cat .env | grep ANTHROPIC_API_KEY
 
 **NiceGUI Web Interface (Phase 3):**
 - Professional web-based GUI for natural language queries
+- **Uses proven POC approach:** Natural Language → SQL (Claude) → Execute → Group
 - Hierarchical results display with expand/collapse
 - Visual status indicators and frequency badges
 - Real-time querying with Claude AI
-- Fallback to mock data if database not available
-- Launch with: `slack-insights gui`
+- Graceful error handling (no crashes)
+- SQL query transparency (collapsible view)
+- Launch with: `slack-insights gui` or `python -m src.slack_insights.gui.app`
 
 ## What's Next
 
