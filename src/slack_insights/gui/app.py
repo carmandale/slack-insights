@@ -12,7 +12,6 @@ from nicegui import ui
 from .components.results_display import create_results_tree
 from .utils.query_engine import QueryEngine
 
-
 # Initialize query engine (will be set in create_app)
 query_engine: QueryEngine | None = None
 

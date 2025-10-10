@@ -10,6 +10,9 @@ from anthropic import Anthropic
 from ...database import get_action_items_by_assigner, init_database
 from ...deduplication import group_similar_tasks_simple
 
+# Error message constants
+DB_NOT_FOUND_MSG = "Database not found: {}"
+
 
 class QueryEngine:
 	"""Handles natural language queries for action items."""
@@ -25,10 +28,10 @@ class QueryEngine:
 
 		# Ensure database exists
 		if not Path(db_path).exists():
-			raise FileNotFoundError(f"Database not found: {db_path}")
+			raise FileNotFoundError(DB_NOT_FOUND_MSG.format(db_path))
 
 		self.db_path = db_path
-		self.client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+		self.api_key = os.getenv("ANTHROPIC_API_KEY")
 
 	def _get_connection(self) -> sqlite3.Connection:
 		"""Get a database connection."""
@@ -69,11 +72,13 @@ Examples:
 Now parse the query above and return ONLY the JSON object:"""
 
 		try:
-			response = self.client.messages.create(
-				model="claude-sonnet-4-20250514",
-				max_tokens=500,
-				messages=[{"role": "user", "content": prompt}],
-			)
+			# Use Anthropic client as context manager for proper resource cleanup
+			with Anthropic(api_key=self.api_key) as client:
+				response = client.messages.create(
+					model="claude-sonnet-4-20250514",
+					max_tokens=500,
+					messages=[{"role": "user", "content": prompt}],
+				)
 
 			# Extract JSON from response
 			content = response.content[0].text.strip()

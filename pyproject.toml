@@ -50,6 +50,9 @@ indent-width = 4
 select = ["E", "F", "I", "N", "W"]
 ignore = ["W191"]  # Allow tabs (per code-style.md)
 
+[tool.ruff.lint.per-file-ignores]
+"src/slack_insights/gui/**/*.py" = ["E501"]  # Allow long lines in GUI (UI strings, prompts)
+
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "tab"

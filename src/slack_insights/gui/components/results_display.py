@@ -94,8 +94,6 @@ def create_results_tree(grouped_results: List[Dict[str, Any]]) -> None:
 
 				for idx, instance in enumerate(instances, 1):
 					with ui.card().classes("w-full bg-gray-50 p-3 mt-1"):
-						task_desc = instance.get("task_description", canonical_task)
-						assigner = instance.get("assigner_username", "Unknown")
 						timestamp = instance.get("timestamp", 0)
 						date_str = format_date(timestamp, relative=False)
 						context = instance.get("context", "")
