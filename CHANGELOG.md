@@ -7,21 +7,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-10-10
+
 ### Added
-- **Natural Language Query POC** (Phase 3)
-  - Terminal chat interface (`poc_chat_terminal.py`)
-  - Converts natural language to SQL using Claude
-  - Smart grouping/deduplication module (`deduplication.py`)
-  - Interactive expansion of grouped tasks
-  - Example queries: "What did Dan ask me to do for Orchestrator?"
-  - AI-powered grouping variant (`poc_chat_terminal_grouped.py`)
-  - Gradio web UI variant (`poc_chat_ui.py`)
-  - Documentation: POC_NATURAL_LANGUAGE.md, GROUPING_ENHANCEMENT.md, EXPANSION_DEMO.md
+- **NiceGUI Web Interface** (Phase 3, Issue #3, PR #4)
+  - Professional web-based GUI for natural language queries
+  - Launch with: `python -m src.slack_insights.gui.app` or `slack-insights gui`
+  - Modern UI with hierarchical results display
+  - Visual status indicators (⏳ open, ✅ completed, ❓ unknown)
+  - Frequency badges for repeated tasks ("⚠ 4x")
+  - Expand/collapse for grouped results
+  - SQL query transparency (collapsible view)
+  - Real-time querying with Claude AI
+  - Mock data fallback for demos
+
+- **Natural Language Query Engine** (`nlq_engine.py`)
+  - Extracted proven POC approach: NL → SQL → Execute → Group
+  - Claude-powered SQL generation from natural language
+  - Smart grouping with deduplication
+  - Database query execution with validation
+
+- **Shared Query Service** (`query_service.py`)
+  - Reusable service for CLI and GUI
+  - Structured parameter extraction
+  - Fallback parsing when API unavailable
+  - Connection management
+
+- **CLI Integration**
+  - New `gui` command launches web interface
+  - New `query` command for terminal natural language queries
+
+- **🔒 Security Hardening** (Critical fixes)
+  - SQL injection prevention with comprehensive validation
+  - Input validation (length, characters, keywords)
+  - Rate limiting (10 queries/minute)
+  - Read-only database mode for queries
+  - Security test suite
 
 ### Changed
-- Improved result display with tree-based formatting
-- Added frequency indicators for duplicate tasks (e.g., "⚠ Mentioned 4 times")
-- Numbered groups for easy reference and expansion
+- Database now opens in read-only mode for query operations
+- Error handling improved (no server crashes)
+- UI components modularized (app.py, results_display.py, formatting.py)
+- README updated with NiceGUI documentation
+
+### Fixed
+- "Connection lost" error when queries fail (improved error handling)
+- ANTHROPIC_API_KEY not loading (added load_dotenv() to app)
+- Terrible/irrelevant query results (restored POC approach)
+- SQL injection vulnerability (CRITICAL - now prevented)
+
+### Security
+- ✅ SQL injection prevented with validation + read-only DB
+- ✅ Input sanitization and validation
+- ✅ Rate limiting prevents API abuse
+- ✅ Error messages don't leak sensitive data (DEBUG_MODE flag)
+
+### Testing
+- Validated with 6 malicious SQL queries - all blocked
+- Validated with 5 input validation tests - all pass
+- Rate limiting tested and working
+- Real query test: "What did Dan ask me to do?" returns 13 accurate grouped tasks
+
+### Documentation
+- Added WARP.md for quick reference
+- Added NiceGUI spec and tasks in `.agent-os/specs/2025-10-08-nicegui-interface-#3/`
+- Added research documentation (nicegui-best-practices.md, nicegui-framework-documentation.md)
+- Updated README with web interface usage
 
 ## [0.2.0] - 2025-10-08
 
