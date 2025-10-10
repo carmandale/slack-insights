@@ -120,15 +120,26 @@ def index_page() -> None:
 				last_explanation = explanation
 				display_results(results_container, results, explanation, sql_query)
 			except Exception as e:
+				# Handle errors gracefully without crashing the server
+				import traceback
+				print(f"\n❌ Query error: {e}")
+				traceback.print_exc()
+				print()
+
 				results_container.clear()
 				with results_container:
 					with ui.card().classes("w-full p-4 bg-red-50"):
-						ui.label(f"❌ Error: {str(e)}").classes("text-red-700")
-						ui.label("Check console for details").classes("text-red-500 text-sm mt-2")
-				# Re-raise for debugging
-				import traceback
-				print(f"Query error: {e}")
-				traceback.print_exc()
+						ui.label(f"❌ Error: {str(e)}").classes("text-red-700 font-semibold")
+						ui.label("The app is still running. You can try another query.").classes(
+							"text-gray-600 text-sm mt-2"
+						)
+
+						# Show error details in expandable section
+						with ui.expansion("Error Details", icon="bug_report").classes("mt-2"):
+							error_details = traceback.format_exc()
+							ui.label(error_details).classes(
+								"text-xs font-mono text-gray-700 whitespace-pre-wrap"
+							)
 		else:
 			# Use mock data (fallback when no database or API key)
 			display_results(results_container, MOCK_RESULTS, "Using mock data", None)
