@@ -384,10 +384,10 @@ def gui(
 		console.print(f"\n[green]✓[/green] Opening browser at http://localhost:{port}\n")
 
 		# Import and run the GUI
-		from slack_insights.gui.app import create_app
+		from slack_insights.gui import app
 		from nicegui import ui
 
-		create_app()
+		# Import the page decorator (registers routes)
 		ui.run(
 			title="Slack Insights",
 			host="127.0.0.1",  # Bind to localhost only for security

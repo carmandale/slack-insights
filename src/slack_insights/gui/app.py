@@ -9,8 +9,8 @@ from typing import Any, Dict, List
 
 from nicegui import ui
 
-from .components.results_display import create_results_tree
-from .utils.query_engine import QueryEngine
+from slack_insights.gui.components.results_display import create_results_tree
+from slack_insights.gui.utils.query_engine import QueryEngine
 
 
 # Minimal mock data (fallback if database not available)
@@ -46,10 +46,11 @@ MOCK_RESULTS: List[Dict[str, Any]] = [
 ]
 
 
-def create_app() -> None:
-	"""Create and configure the NiceGUI application."""
+@ui.page("/")
+def index_page() -> None:
+	"""Main page for Slack Insights GUI."""
 
-	# Initialize query engine (local to this function, not global)
+	# Initialize query engine
 	db_path = Path.cwd() / "slack_insights.db"
 	query_engine: QueryEngine | None = None
 
@@ -63,9 +64,6 @@ def create_app() -> None:
 			position="top",
 		)
 		query_engine = None
-
-	# Set page configuration
-	ui.page_title("Slack Insights")
 
 	# Container for results (will be updated dynamically)
 	results_container = None
@@ -176,7 +174,6 @@ def create_app() -> None:
 
 def main() -> None:
 	"""Run the NiceGUI application."""
-	create_app()
 	ui.run(
 		title="Slack Insights",
 		host="127.0.0.1",  # Bind to localhost only for security

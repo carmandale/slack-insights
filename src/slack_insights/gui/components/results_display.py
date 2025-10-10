@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 from nicegui import ui
 
-from ..utils.formatting import (
+from slack_insights.gui.utils.formatting import (
 	format_date,
 	format_frequency_badge,
 	get_status_color,

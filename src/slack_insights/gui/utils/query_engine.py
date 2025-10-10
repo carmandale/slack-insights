@@ -6,7 +6,7 @@ delegating all logic to the shared query_service module.
 
 from typing import Any, Optional
 
-from ...query_service import QueryService
+from slack_insights.query_service import QueryService
 
 
 class QueryEngine:
