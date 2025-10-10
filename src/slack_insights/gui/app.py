@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from nicegui import ui
 
 from slack_insights.gui.components.results_display import create_results_tree
+from slack_insights.gui.utils.input_validator import QueryRateLimiter, validate_user_query
 from slack_insights.nlq_engine import execute_nl_query
 
 # Load environment variables
@@ -83,6 +84,9 @@ def index_page() -> None:
 	last_sql_query = None
 	last_explanation = None
 
+	# Initialize rate limiter for this session
+	rate_limiter = QueryRateLimiter(max_calls=10, period_seconds=60)
+
 	def handle_search() -> None:
 		"""Handle search button click using POC-proven approach."""
 		nonlocal results_container, last_sql_query, last_explanation
@@ -94,6 +98,18 @@ def index_page() -> None:
 
 		if not query_text:
 			ui.notify("Please enter a query", type="warning")
+			return
+
+		# Validate input
+		is_valid, error_msg = validate_user_query(query_text)
+		if not is_valid:
+			ui.notify(error_msg, type="warning")
+			return
+
+		# Check rate limit
+		allowed, rate_msg = rate_limiter.check_limit()
+		if not allowed:
+			ui.notify(rate_msg, type="warning")
 			return
 
 		# Clear previous results
