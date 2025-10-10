@@ -9,10 +9,14 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List
 
+from dotenv import load_dotenv
 from nicegui import ui
 
 from slack_insights.gui.components.results_display import create_results_tree
 from slack_insights.nlq_engine import execute_nl_query
+
+# Load environment variables
+load_dotenv()
 
 
 # Minimal mock data (fallback if database not available)
