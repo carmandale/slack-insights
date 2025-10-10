@@ -1,8 +1,10 @@
 """Main NiceGUI application for Slack Insights.
 
 This module provides the web-based GUI for natural language querying of Slack action items.
+Uses the proven POC approach: NL → SQL → Execute → Group
 """
 
+import os
 import time
 from pathlib import Path
 from typing import Any, Dict, List
@@ -10,7 +12,7 @@ from typing import Any, Dict, List
 from nicegui import ui
 
 from slack_insights.gui.components.results_display import create_results_tree
-from slack_insights.gui.utils.query_engine import QueryEngine
+from slack_insights.nlq_engine import execute_nl_query
 
 
 # Minimal mock data (fallback if database not available)
@@ -50,28 +52,36 @@ MOCK_RESULTS: List[Dict[str, Any]] = [
 def index_page() -> None:
 	"""Main page for Slack Insights GUI."""
 
-	# Initialize query engine
+	# Check database and API key
 	db_path = Path.cwd() / "slack_insights.db"
-	query_engine: QueryEngine | None = None
+	api_key = os.getenv("ANTHROPIC_API_KEY")
+	database_available = db_path.exists()
+	api_key_available = api_key is not None
 
-	try:
-		query_engine = QueryEngine(str(db_path))
+	if database_available and api_key_available:
 		ui.notify("✓ Connected to database", type="positive", position="top")
-	except (FileNotFoundError, ValueError) as e:
+	elif not database_available:
 		ui.notify(
-			f"⚠ {str(e)} Using mock data.",
+			"⚠ Database not found. Using mock data.",
 			type="warning",
 			position="top",
 		)
-		query_engine = None
+	elif not api_key_available:
+		ui.notify(
+			"⚠ ANTHROPIC_API_KEY not set. Using mock data.",
+			type="warning",
+			position="top",
+		)
 
 	# Container for results (will be updated dynamically)
 	results_container = None
 	query_input_ref = None
+	last_sql_query = None
+	last_explanation = None
 
 	def handle_search() -> None:
-		"""Handle search button click."""
-		nonlocal results_container
+		"""Handle search button click using POC-proven approach."""
+		nonlocal results_container, last_sql_query, last_explanation
 
 		if not query_input_ref:
 			return
@@ -90,27 +100,58 @@ def index_page() -> None:
 		with results_container:
 			with ui.row().classes("w-full justify-center items-center gap-4 p-8"):
 				ui.spinner(size="lg")
-				ui.label("Searching...").classes("text-gray-600")
+				ui.label("Thinking...").classes("text-gray-600")
 
-		# Execute query
-		if query_engine:
-			# Use real backend
+		# Execute query using POC approach
+		if database_available and api_key_available:
+			# Use POC approach: NL → SQL → Execute → Group
 			try:
-				results = query_engine.execute_query(query_text)
-				display_results(results_container, results)
+				results, sql_query, explanation = execute_nl_query(
+					query_text,
+					db_path=str(db_path),
+					api_key=api_key,
+					group_results=True
+				)
+				last_sql_query = sql_query
+				last_explanation = explanation
+				display_results(results_container, results, explanation, sql_query)
 			except Exception as e:
 				results_container.clear()
 				with results_container:
 					with ui.card().classes("w-full p-4 bg-red-50"):
 						ui.label(f"❌ Error: {str(e)}").classes("text-red-700")
+						ui.label("Check console for details").classes("text-red-500 text-sm mt-2")
+				# Re-raise for debugging
+				import traceback
+				print(f"Query error: {e}")
+				traceback.print_exc()
 		else:
-			# Use mock data
-			display_results(results_container, MOCK_RESULTS)
+			# Use mock data (fallback when no database or API key)
+			display_results(results_container, MOCK_RESULTS, "Using mock data", None)
 
-	def display_results(container: ui.column, results: list[dict[str, Any]]) -> None:
-		"""Display search results."""
+	def display_results(
+		container: ui.column,
+		results: list[dict[str, Any]],
+		explanation: str | None = None,
+		sql_query: str | None = None
+	) -> None:
+		"""Display search results with explanation and SQL query."""
 		container.clear()
 		with container:
+			# Show explanation if provided
+			if explanation:
+				with ui.card().classes("w-full p-3 bg-blue-50 mb-4"):
+					ui.label(f"💡 {explanation}").classes("text-blue-700")
+
+			# Show SQL query (collapsible) for transparency
+			if sql_query:
+				with ui.expansion("View SQL Query", icon="code").classes("w-full mb-4"):
+					with ui.card().classes("w-full p-3 bg-gray-50"):
+						ui.label(sql_query[:500] + ("..." if len(sql_query) > 500 else "")).classes(
+							"text-sm font-mono text-gray-700 whitespace-pre-wrap"
+						)
+
+			# Show results
 			if not results:
 				with ui.card().classes("w-full p-8"):
 					ui.label("No results found").classes("text-gray-500 text-center text-lg")

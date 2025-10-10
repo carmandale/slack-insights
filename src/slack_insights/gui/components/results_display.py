@@ -16,18 +16,23 @@ from slack_insights.gui.utils.formatting import (
 def create_results_tree(grouped_results: List[Dict[str, Any]]) -> None:
 	"""Create a tree view of grouped action items with expand/collapse.
 
+	Uses POC-proven data format from deduplication.group_similar_tasks_simple().
+
 	Args:
-		grouped_results: List of grouped action items with structure:
+		grouped_results: List of grouped action items with POC structure:
 			[{
 				'canonical_task': str,
 				'count': int,
 				'status': str,
+				'first_date': str (YYYY-MM-DD),
+				'last_date': str (YYYY-MM-DD),
+				'assigner': str,
 				'instances': [{
 					'task_description': str,
 					'assigner_username': str,
 					'timestamp': float,
 					'status': str,
-					'context': str
+					'context': str or 'context_quote': str
 				}, ...]
 			}, ...]
 	"""
@@ -51,6 +56,9 @@ def create_results_tree(grouped_results: List[Dict[str, Any]]) -> None:
 		count = group["count"]
 		status = group.get("status", "unknown")
 		instances = group["instances"]
+		first_date = group.get("first_date", "Unknown")
+		last_date = group.get("last_date", "Unknown")
+		assigner = group.get("assigner", "Unknown")
 
 		# Create expansion panel for each group
 		status_icon = get_status_icon(status)
@@ -72,18 +80,30 @@ def create_results_tree(grouped_results: List[Dict[str, Any]]) -> None:
 					f"text-sm {status_color}"
 				)
 
-				# Show first instance preview
+				# Show from/date info (POC format)
+				ui.label(f"From: {assigner}").classes("text-sm text-gray-600")
+
+				if count > 1 and first_date and last_date:
+					if first_date == last_date:
+						ui.label(f"⚠ Mentioned {count} times on {first_date}").classes(
+							"text-sm text-orange-600 font-semibold"
+						)
+					else:
+						ui.label(f"⚠ Mentioned {count} times ({first_date} to {last_date})").classes(
+							"text-sm text-orange-600 font-semibold"
+						)
+				else:
+					ui.label(f"Date: {first_date}").classes("text-sm text-gray-600")
+
+				# Show first instance context preview
 				if instances:
 					first = instances[0]
-					assigner = first.get("assigner_username", "Unknown")
-					timestamp = first.get("timestamp", 0)
-					date_str = format_date(timestamp, relative=True)
-					context = first.get("context", "")
-
-					ui.label(f"From: {assigner} • {date_str}").classes("text-sm text-gray-600")
-					ui.label(truncate_text(context, max_length=150)).classes(
-						"text-sm text-gray-700 italic"
-					)
+					# Handle both 'context' and 'context_quote' field names (POC compatibility)
+					context = first.get("context_quote") or first.get("context", "")
+					if context:
+						ui.label(truncate_text(context, max_length=150)).classes(
+							"text-sm text-gray-700 italic"
+						)
 
 				ui.separator()
 
@@ -94,13 +114,21 @@ def create_results_tree(grouped_results: List[Dict[str, Any]]) -> None:
 
 				for idx, instance in enumerate(instances, 1):
 					with ui.card().classes("w-full bg-gray-50 p-3 mt-1"):
-						timestamp = instance.get("timestamp", 0)
-						date_str = format_date(timestamp, relative=False)
-						context = instance.get("context", "")
+						# Handle both POC format (date string) and timestamp
+						date_value = instance.get("date")
+						if date_value:
+							date_str = date_value  # Already formatted in POC
+						else:
+							timestamp = instance.get("timestamp", 0)
+							date_str = format_date(timestamp, relative=False)
+
+						# Handle both 'context' and 'context_quote' field names
+						context = instance.get("context_quote") or instance.get("context", "")
 						inst_status = instance.get("status", "unknown")
+						inst_status_icon = get_status_icon(inst_status)
 
 						# Instance header
-						ui.label(f"Instance {idx} - {date_str}").classes(
+						ui.label(f"{inst_status_icon} Instance {idx} - {date_str}").classes(
 							"font-semibold text-sm"
 						)
 						ui.label(f"Status: {inst_status}").classes(
