@@ -286,5 +286,50 @@ def query_person(
 			conn.close()
 
 
+@app.command()
+def gui(
+	port: int = typer.Option(8080, "--port", help="Port to run the web interface on"),
+	reload: bool = typer.Option(False, "--reload", help="Enable auto-reload on code changes"),
+) -> None:
+	"""Launch the NiceGUI web interface for natural language queries.
+
+	Opens a browser window with an interactive interface for querying
+	Slack action items using natural language.
+	"""
+	try:
+		db_path = get_db_path()
+
+		if not os.path.exists(db_path):
+			console.print("[yellow]Warning:[/yellow] Database not found at:", db_path)
+			console.print("The GUI will launch with mock data.")
+			console.print("\nTo use real data:")
+			console.print("  1. Run [bold]slack-insights import <file>[/bold] to import Slack messages")
+			console.print("  2. Run [bold]slack-insights analyze[/bold] to extract action items")
+			console.print("  3. Run [bold]slack-insights gui[/bold] again\n")
+
+		console.print(f"[cyan]Launching Slack Insights GUI...[/cyan]")
+		console.print(f"[dim]Port: {port}[/dim]")
+		console.print(f"[dim]Database: {db_path}[/dim]")
+		console.print(f"\n[green]✓[/green] Opening browser at http://localhost:{port}\n")
+
+		# Import and run the GUI
+		from slack_insights.gui.app import create_app
+		from nicegui import ui
+
+		create_app()
+		ui.run(
+			title="Slack Insights",
+			port=port,
+			reload=reload,
+			show=True,
+		)
+
+	except KeyboardInterrupt:
+		console.print("\n[yellow]GUI stopped by user[/yellow]")
+	except Exception as e:
+		console.print(f"[red]Error launching GUI:[/red] {e}")
+		raise typer.Exit(code=1)
+
+
 if __name__ == "__main__":
 	app()

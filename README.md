@@ -8,6 +8,7 @@ Slack Insights transforms overwhelming Slack conversation history into actionabl
 
 ## Features
 
+- **Web GUI** - Modern web interface for natural language queries (NEW!)
 - **Import** Slack conversations from SlackDump exports with username resolution
 - **Extract** action items automatically using Claude AI with:
   - Thread context preservation for conversational flow
@@ -48,9 +49,37 @@ slack-insights import dan-messages/D3Y7V95DX.json
 # 2. Analyze and extract action items using Claude AI
 slack-insights analyze
 
-# 3. Query action items from a specific person
+# 3. Launch the web GUI for natural language queries
+slack-insights gui
+
+# Or query via command line
 slack-insights query-person Dan
 ```
+
+### Web Interface (NEW)
+
+The easiest way to query your action items is through the web interface:
+
+```bash
+# Launch the GUI
+slack-insights gui
+
+# Opens browser at http://localhost:8080
+# Query using natural language:
+#   "What did Dan ask me to do?"
+#   "Show me urgent tasks"
+#   "What's still open for AT&T?"
+```
+
+Features:
+- 🔍 Natural language query input
+- 📊 Hierarchical results with expand/collapse
+- 🎨 Visual status indicators (⏳ open, ✅ completed)
+- ⚠️ Frequency badges for repeated tasks
+- 📅 Relative timestamps ("2 days ago")
+- 💬 Context quotes from original messages
+- ⌨️ Press Enter to search
+- 📋 Example queries for quick start
 
 ### Query Options
 
@@ -146,9 +175,9 @@ cat .env | grep ANTHROPIC_API_KEY
 
 ## Project Status
 
-**Phase 1:** Foundation & Basic Query ✅ Complete (66 tests passing, 95% coverage)  
-**Phase 2:** Extraction Quality Fixes ✅ Complete (21/21 tests passing)  
-**Phase 3:** Natural Language Query POC ✅ Complete
+**Phase 1:** Foundation & Basic Query ✅ Complete (66 tests passing, 95% coverage)
+**Phase 2:** Extraction Quality Fixes ✅ Complete (21/21 tests passing)
+**Phase 3:** NiceGUI Web Interface ✅ Complete (Issue #3)
 
 **Recent Improvements (Issue #2):**
 - Username resolution with 100% coverage
@@ -158,25 +187,18 @@ cat .env | grep ANTHROPIC_API_KEY
 - Sliding window batching with overlap
 - **Result:** 24 action items from last 7 days (previously 0)
 
-**Natural Language Query POC (Phase 3):**
-- Terminal chat interface for natural language queries
-- Smart grouping/deduplication of similar tasks
-- Interactive expansion to see all instances
-- Example queries:
-  - "What did Dan ask me to do for Orchestrator?"
-  - "Show me urgent tasks from last week"
-  - "What AT&T tasks are still open?"
-
-**Try the POC:**
-```bash
-python poc_chat_terminal.py
-```
-
-See [POC_NATURAL_LANGUAGE.md](POC_NATURAL_LANGUAGE.md) for complete guide.
+**NiceGUI Web Interface (Phase 3):**
+- Professional web-based GUI for natural language queries
+- Hierarchical results display with expand/collapse
+- Visual status indicators and frequency badges
+- Real-time querying with Claude AI
+- Fallback to mock data if database not available
+- Launch with: `slack-insights gui`
 
 ## What's Next
 
 See [roadmap.md](.agent-os/product/roadmap.md) for upcoming features:
-- Phase 3: Productionize natural language query as CLI command
-- Phase 4: Summaries and reporting
-- Phase 5: Performance optimization and polish
+- Phase 4: Enhanced UI features (query history, keyboard shortcuts, export)
+- Phase 5: Desktop app packaging (optional)
+- Phase 6: Summaries and reporting
+- Phase 7: Performance optimization and polish
