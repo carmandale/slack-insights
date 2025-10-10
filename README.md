@@ -49,16 +49,36 @@ slack-insights import dan-messages/D3Y7V95DX.json
 # 2. Analyze and extract action items using Claude AI
 slack-insights analyze
 
-# 3. Launch the web GUI for natural language queries
+# 3. Query using natural language (NEW!)
+slack-insights query "What did Dan ask me to do?"
+
+# Or use the web GUI
 slack-insights gui
 
-# Or query via command line
+# Or use structured command
 slack-insights query-person Dan
+```
+
+### Natural Language Queries (NEW)
+
+Query your action items using plain English in the terminal:
+
+```bash
+# Ask questions naturally
+slack-insights query "What did Dan ask me to do?"
+slack-insights query "Show me urgent tasks from last week"
+slack-insights query "What's still open for AT&T?"
+
+# Results show grouped tasks with frequency counts
+# Example output:
+#   ⚠ 3x Deploy API endpoint
+#   Status: open
+#   From: dan • 2025-10-05
 ```
 
 ### Web Interface (NEW)
 
-The easiest way to query your action items is through the web interface:
+Or use the web GUI for a visual experience:
 
 ```bash
 # Launch the GUI

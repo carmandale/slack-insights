@@ -23,6 +23,12 @@ def init_database(db_path: str = "slack_insights.db") -> sqlite3.Connection:
 	conn = sqlite3.connect(db_path)
 	conn.row_factory = sqlite3.Row  # Enable column access by name
 
+	# Enable WAL mode for concurrent access (web GUI support)
+	conn.execute("PRAGMA journal_mode=WAL")
+
+	# Set busy timeout for concurrent access (5 seconds)
+	conn.execute("PRAGMA busy_timeout = 5000")
+
 	# Enable foreign key constraints
 	conn.execute("PRAGMA foreign_keys = ON")
 
@@ -206,6 +212,9 @@ def get_action_items_by_assigner(
 	Returns:
 		List of action item dicts with conversation context
 	"""
+	# Escape LIKE wildcards to prevent unintended matches
+	escaped_name = assigner_name.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
 	query = """
 		SELECT
 			ai.id,
@@ -221,10 +230,10 @@ def get_action_items_by_assigner(
 			c.message_text
 		FROM action_items ai
 		JOIN conversations c ON ai.conversation_id = c.id
-		WHERE ai.assigner_username LIKE ?
+		WHERE ai.assigner_username LIKE ? ESCAPE '\\'
 	"""
 
-	params = [f"%{assigner_name}%"]
+	params = [f"%{escaped_name}%"]
 
 	if status:
 		query += " AND ai.status = ?"

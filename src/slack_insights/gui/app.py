@@ -12,86 +12,34 @@ from nicegui import ui
 from .components.results_display import create_results_tree
 from .utils.query_engine import QueryEngine
 
-# Initialize query engine (will be set in create_app)
-query_engine: QueryEngine | None = None
 
-
-# Mock data for testing (fallback if database not available)
+# Minimal mock data (fallback if database not available)
 MOCK_RESULTS: List[Dict[str, Any]] = [
 	{
-		"canonical_task": "Deploy new API endpoint",
-		"count": 4,
+		"canonical_task": "Deploy API endpoint",
+		"count": 2,
 		"status": "open",
 		"instances": [
 			{
-				"task_description": "Deploy new API endpoint to production",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 3600,  # 1 hour ago
-				"status": "open",
-				"context": "We need to deploy the new API endpoint before EOD. Can you handle this?",
-			},
-			{
 				"task_description": "Deploy API endpoint",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 7200,  # 2 hours ago
-				"status": "open",
-				"context": "Just a reminder about the API endpoint deployment.",
-			},
-			{
-				"task_description": "Deploy the API",
-				"assigner_username": "itzaferg",
+				"assigner_username": "dan",
 				"timestamp": time.time() - 86400,  # 1 day ago
 				"status": "open",
-				"context": "Did you get a chance to deploy the API?",
-			},
-			{
-				"task_description": "Deploy new endpoint",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 172800,  # 2 days ago
-				"status": "open",
-				"context": "We really need that API deployed soon.",
+				"context": "We need to deploy the API endpoint before EOD.",
 			},
 		],
 	},
 	{
-		"canonical_task": "Provide PSD file",
-		"count": 3,
+		"canonical_task": "Review documentation",
+		"count": 1,
 		"status": "completed",
 		"instances": [
 			{
-				"task_description": "Send PSD file for review",
-				"assigner_username": "itzaferg",
+				"task_description": "Review documentation",
+				"assigner_username": "dan",
 				"timestamp": time.time() - 259200,  # 3 days ago
 				"status": "completed",
-				"context": "Can you send me the PSD file when you get a chance?",
-			},
-			{
-				"task_description": "Share PSD",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 345600,  # 4 days ago
-				"status": "completed",
-				"context": "I need the PSD file to update the design.",
-			},
-			{
-				"task_description": "Send design file",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 432000,  # 5 days ago
-				"status": "completed",
-				"context": "Please send the PSD file when ready.",
-			},
-		],
-	},
-	{
-		"canonical_task": "Update documentation",
-		"count": 1,
-		"status": "open",
-		"instances": [
-			{
-				"task_description": "Update project documentation",
-				"assigner_username": "itzaferg",
-				"timestamp": time.time() - 518400,  # 6 days ago
-				"status": "open",
-				"context": "The documentation needs to be updated with the latest changes.",
+				"context": "Can you review the updated docs?",
 			},
 		],
 	},
@@ -100,16 +48,17 @@ MOCK_RESULTS: List[Dict[str, Any]] = [
 
 def create_app() -> None:
 	"""Create and configure the NiceGUI application."""
-	global query_engine
 
-	# Initialize query engine
+	# Initialize query engine (local to this function, not global)
 	db_path = Path.cwd() / "slack_insights.db"
+	query_engine: QueryEngine | None = None
+
 	try:
 		query_engine = QueryEngine(str(db_path))
 		ui.notify("✓ Connected to database", type="positive", position="top")
-	except FileNotFoundError:
+	except (FileNotFoundError, ValueError) as e:
 		ui.notify(
-			f"⚠ Database not found at {db_path}. Using mock data.",
+			f"⚠ {str(e)} Using mock data.",
 			type="warning",
 			position="top",
 		)
@@ -122,7 +71,7 @@ def create_app() -> None:
 	results_container = None
 	query_input_ref = None
 
-	def handle_search():
+	def handle_search() -> None:
 		"""Handle search button click."""
 		nonlocal results_container
 
@@ -150,7 +99,7 @@ def create_app() -> None:
 			# Use real backend
 			try:
 				results = query_engine.execute_query(query_text)
-				ui.timer(0.1, lambda: display_results(results_container, results), once=True)
+				display_results(results_container, results)
 			except Exception as e:
 				results_container.clear()
 				with results_container:
@@ -158,13 +107,9 @@ def create_app() -> None:
 						ui.label(f"❌ Error: {str(e)}").classes("text-red-700")
 		else:
 			# Use mock data
-			ui.timer(
-				1.0,  # 1 second delay to simulate API call
-				lambda: display_results(results_container, MOCK_RESULTS),
-				once=True,
-			)
+			display_results(results_container, MOCK_RESULTS)
 
-	def display_results(container, results):
+	def display_results(container: ui.column, results: list[dict[str, Any]]) -> None:
 		"""Display search results."""
 		container.clear()
 		with container:
@@ -234,6 +179,7 @@ def main() -> None:
 	create_app()
 	ui.run(
 		title="Slack Insights",
+		host="127.0.0.1",  # Bind to localhost only for security
 		port=8080,
 		reload=True,
 		show=True,
