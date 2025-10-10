@@ -11,9 +11,13 @@ from pathlib import Path
 from typing import Any, Optional
 
 from anthropic import Anthropic
+from dotenv import load_dotenv
 
 from .database import get_action_items_by_assigner, init_database
 from .deduplication import group_similar_tasks_simple
+
+# Load environment variables
+load_dotenv()
 
 
 # Error message constants
