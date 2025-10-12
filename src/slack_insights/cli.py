@@ -358,6 +358,49 @@ def query(query_text: str) -> None:
 
 
 @app.command()
+def chat() -> None:
+	"""Start an interactive chat session for natural language queries.
+
+	Launch an interactive chat interface where you can ask questions about
+	your Slack conversations in natural language. The chat maintains context
+	and supports follow-up questions.
+
+	Examples:
+	  - What did Dan ask me to do?
+	  - Show me urgent tasks from last week
+	  - What's the latest update in TMA Disasterville?
+	  - What tasks are related to the Orchestrator app?
+
+	Commands:
+	  /help              - Show available commands
+	  /history           - Show conversation history
+	  /clear             - Clear conversation history
+	  /channel <name>    - Set channel filter
+	  /project <name>    - Set project filter
+	  /clear-filters     - Clear all filters
+	  /channels          - List available channels
+	  /exit or /quit     - Exit chat session
+	"""
+	try:
+		db_path = get_db_path()
+
+		if not os.path.exists(db_path):
+			console.print("[red]Error:[/red] Database not found.")
+			console.print("Run [bold]slack-insights import <file>[/bold] first.")
+			raise typer.Exit(code=1)
+
+		# Import and run interactive chat
+		from slack_insights.chat.cli_chat import run_interactive_chat
+		run_interactive_chat(db_path)
+
+	except KeyboardInterrupt:
+		console.print("\n[yellow]Chat stopped by user[/yellow]")
+	except Exception as e:
+		console.print(f"[red]Error:[/red] {e}")
+		raise typer.Exit(code=1)
+
+
+@app.command()
 def gui(
 	port: int = typer.Option(8080, "--port", help="Port to run the web interface on"),
 	reload: bool = typer.Option(False, "--reload", help="Enable auto-reload on code changes"),
